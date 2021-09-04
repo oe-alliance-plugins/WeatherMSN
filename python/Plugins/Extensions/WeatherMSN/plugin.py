@@ -388,7 +388,7 @@ else: #HD
 			<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/WeatherMSN/buttons/key_epg.png" position="1130,620" size="40,20" alphatest="on" />
 		</screen>"""
 
-class WeatherMSN(ConfigListScreen, Screen):
+class WeatherMSN(Screen):
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self.session = session
