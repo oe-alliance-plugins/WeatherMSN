@@ -1,0 +1,24 @@
+{
+  "depends": "",
+  "description": "WeatherMSN",
+  "legacy_setup": {
+    "description": "",
+    "has_setup_translate": false,
+    "name": "",
+    "package_data": [],
+    "package_dir_value": "",
+    "packages": [],
+    "pkg": "",
+    "version": ""
+  },
+  "module_dir_name": "WeatherMSN",
+  "package_name": "enigma2-plugin-extensions-weather-m-s-n",
+  "plugin_group": "extensions",
+  "source_repo_branch": "master",
+  "source_repo_name": "WeatherMSN",
+  "source_repo_url": "https://github.com/oe-mirrors/enigma2-plugins.git",
+  "target_repo_branch": "main",
+  "target_repo_name": "WeatherMSN",
+  "target_repo_url": "git@github.com:oe-alliance-plugins/WeatherMSN.git",
+  "version": "1.0"
+}
