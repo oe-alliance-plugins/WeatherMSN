@@ -24,7 +24,8 @@
 import os
 import math
 import gettext
-import datetime, time
+import datetime
+import time
 from Tools.Directories import fileExists, pathExists
 from Components.Converter.Converter import Converter
 from Components.Element import cached
@@ -37,16 +38,17 @@ from os import environ
 from Components.Converter.Poll import Poll
 import six
 
-weather_city = config.plugins.weathermsn.city.value # 'Moscow,Russia'
-degreetype = config.plugins.weathermsn.degreetype.value # 'C'
-windtype = config.plugins.weathermsn.windtype.value # 'ms'
-weather_location = config.osd.language.value.replace('_', '-') # 'ru-RU'
+weather_city = config.plugins.weathermsn.city.value  # 'Moscow,Russia'
+degreetype = config.plugins.weathermsn.degreetype.value  # 'C'
+windtype = config.plugins.weathermsn.windtype.value  # 'ms'
+weather_location = config.osd.language.value.replace('_', '-')  # 'ru-RU'
 
 if weather_location == 'en-EN':
 	weather_location = 'en-US'
 
 time_update = 30
 time_update_ms = 3000
+
 
 class MSNWeather2(Poll, Converter, object):
 
@@ -405,116 +407,116 @@ class MSNWeather2(Poll, Converter, object):
 		min = float(strftime('%M'))
 		sec = float(strftime('%S'))
 		info, weze = 'n/a', ''
-		msnweather = {'Vfd': '',\
-			'Date': '',\
-			'Shortdate': '',\
-			'Day': '',\
-			'Shortday': '',\
-			'Location': '',\
-			'Timezone': '',\
-			'Latitude': '',\
-			'Longitude': '',\
-			'Julianday': '',\
-			'Sunrise': '',\
-			'Sunset': '',\
-			'Solstice': '',\
-			'Mercuryrise': '',\
-			'Mercuryset': '',\
-			'Mercuryculmination': '',\
-			'Mercuryazimuth': '',\
-			'Venusrise': '',\
-			'Venusset': '',\
-			'Venusculmination': '',\
-			'Venusazimuth': '',\
-			'Marsrise': '',\
-			'Marsset': '',\
-			'Marsculmination': '',\
-			'Marsazimuth': '',\
-			'Jupiterrise': '',\
-			'Jupiterset': '',\
-			'Jupiterculmination': '',\
-			'Jupiterazimuth': '',\
-			'Saturnrise': '',\
-			'Saturnset': '',\
-			'Saturnculmination': '',\
-			'Saturnazimuth': '',\
-			'Uranusrise': '',\
-			'Uranusset': '',\
-			'Uranusculmination': '',\
-			'Uranusazimuth': '',\
-			'Neptunerise': '',\
-			'Neptuneset': '',\
-			'Neptuneculmination': '',\
-			'Neptuneazimuth': '',\
-			'Moonrise': '',\
-			'Moonset': '',\
-			'Moonculmination': '',\
-			'Moondist': '',\
-			'Moonazimuth': '',\
-			'Moonphase': '',\
-			'Moonlight': '',\
-			'PiconMoon': '1',\
-			'Temp': '',\
-			'Picon': '',\
-			'Skytext': '',\
-			'Feelslike': '',\
-			'Humidity': '',\
-			'Wind': '',\
-			'Windspeed': '',\
-			'Date0': '',\
-			'Shortdate0': '',\
-			'Day0': '',\
-			'Shortday0': '',\
-			'Temp0': '',\
-			'Lowtemp0': '',\
-			'Hightemp0': '',\
-			'Picon0': '',\
-			'Skytext0': '',\
-			'Precip0': '',\
-			'Date1': '',\
-			'Shortdate1': '',\
-			'Day1': '',\
-			'Shortday1': '',\
-			'Temp1': '',\
-			'Lowtemp1': '',\
-			'Hightemp1': '',\
-			'Picon1': '',\
-			'Skytext1': '',\
-			'Precip1': '',\
-			'Date2': '',\
-			'Shortdate2': '',\
-			'Day2': '',\
-			'Shortday2': '',\
-			'Temp2': '',\
-			'Lowtemp2': '',\
-			'Hightemp2': '',\
-			'Picon2': '',\
-			'Skytext2': '',\
-			'Precip2': '',\
-			'Date3': '',\
-			'Shortdate3': '',\
-			'Day3': '',\
-			'Shortday3': '',\
-			'Temp3': '',\
-			'Lowtemp3': '',\
-			'Hightemp3': '',\
-			'Picon3': '',\
-			'Skytext3': '',\
-			'Precip3': '',\
-			'Date4': '',\
-			'Shortdate4': '',\
-			'Day4': '',\
-			'Shortday4': '',\
-			'Temp4': '',\
-			'Lowtemp4': '',\
-			'Hightemp4': '',\
-			'Picon4': '',\
-			'Skytext4': '',\
-			'Precip4': '',\
+		msnweather = {'Vfd': '',
+			'Date': '',
+			'Shortdate': '',
+			'Day': '',
+			'Shortday': '',
+			'Location': '',
+			'Timezone': '',
+			'Latitude': '',
+			'Longitude': '',
+			'Julianday': '',
+			'Sunrise': '',
+			'Sunset': '',
+			'Solstice': '',
+			'Mercuryrise': '',
+			'Mercuryset': '',
+			'Mercuryculmination': '',
+			'Mercuryazimuth': '',
+			'Venusrise': '',
+			'Venusset': '',
+			'Venusculmination': '',
+			'Venusazimuth': '',
+			'Marsrise': '',
+			'Marsset': '',
+			'Marsculmination': '',
+			'Marsazimuth': '',
+			'Jupiterrise': '',
+			'Jupiterset': '',
+			'Jupiterculmination': '',
+			'Jupiterazimuth': '',
+			'Saturnrise': '',
+			'Saturnset': '',
+			'Saturnculmination': '',
+			'Saturnazimuth': '',
+			'Uranusrise': '',
+			'Uranusset': '',
+			'Uranusculmination': '',
+			'Uranusazimuth': '',
+			'Neptunerise': '',
+			'Neptuneset': '',
+			'Neptuneculmination': '',
+			'Neptuneazimuth': '',
+			'Moonrise': '',
+			'Moonset': '',
+			'Moonculmination': '',
+			'Moondist': '',
+			'Moonazimuth': '',
+			'Moonphase': '',
+			'Moonlight': '',
+			'PiconMoon': '1',
+			'Temp': '',
+			'Picon': '',
+			'Skytext': '',
+			'Feelslike': '',
+			'Humidity': '',
+			'Wind': '',
+			'Windspeed': '',
+			'Date0': '',
+			'Shortdate0': '',
+			'Day0': '',
+			'Shortday0': '',
+			'Temp0': '',
+			'Lowtemp0': '',
+			'Hightemp0': '',
+			'Picon0': '',
+			'Skytext0': '',
+			'Precip0': '',
+			'Date1': '',
+			'Shortdate1': '',
+			'Day1': '',
+			'Shortday1': '',
+			'Temp1': '',
+			'Lowtemp1': '',
+			'Hightemp1': '',
+			'Picon1': '',
+			'Skytext1': '',
+			'Precip1': '',
+			'Date2': '',
+			'Shortdate2': '',
+			'Day2': '',
+			'Shortday2': '',
+			'Temp2': '',
+			'Lowtemp2': '',
+			'Hightemp2': '',
+			'Picon2': '',
+			'Skytext2': '',
+			'Precip2': '',
+			'Date3': '',
+			'Shortdate3': '',
+			'Day3': '',
+			'Shortday3': '',
+			'Temp3': '',
+			'Lowtemp3': '',
+			'Hightemp3': '',
+			'Picon3': '',
+			'Skytext3': '',
+			'Precip3': '',
+			'Date4': '',
+			'Shortdate4': '',
+			'Day4': '',
+			'Shortday4': '',
+			'Temp4': '',
+			'Lowtemp4': '',
+			'Hightemp4': '',
+			'Picon4': '',
+			'Skytext4': '',
+			'Precip4': '',
 			}
 #
 		if fileExists("/tmp/weathermsn2.xml"):
-			if int((time.time() - os.stat("/tmp/weathermsn2.xml").st_mtime)/60) >= time_update:
+			if int((time.time() - os.stat("/tmp/weathermsn2.xml").st_mtime) / 60) >= time_update:
 				self.get_xmlfile()
 		else:
 			self.get_xmlfile()
@@ -534,8 +536,8 @@ class MSNWeather2(Poll, Converter, object):
 					timezone = '%s' % float(line.split('timezone')[1].split('"')[1])
 					msnweather['Latitude'] = line.split(' lat')[1].split('"')[1]
 					msnweather['Longitude'] = line.split(' long')[1].split('"')[1]
-					latitude = '%s' %  line.split(' lat')[1].split('"')[1].replace(',', '.')
-					longitude = '%s' %  line.split(' long')[1].split('"')[1].replace(',', '.')
+					latitude = '%s' % line.split(' lat')[1].split('"')[1].replace(',', '.')
+					longitude = '%s' % line.split(' long')[1].split('"')[1].replace(',', '.')
 				if "<current" in line:
 					if not line.split('temperature')[1].split('"')[1][0] == '-' and not line.split('temperature')[1].split('"')[1][0] == '0':
 						msnweather['Temp'] = '+' + line.split('temperature')[1].split('"')[1] + '%s%s' % (six.ensure_str(six.unichr(176)), degreetype)
@@ -561,9 +563,9 @@ class MSNWeather2(Poll, Converter, object):
 						msnweather['Windspeed'] = _('%.01f m/s') % (float(line.split('windspeed')[1].split('"')[1].split(' ')[0]) * 0.45)
 # ft/s
 					elif windtype == 'fts' and line.split('windspeed')[1].split('"')[1].split(' ')[1] == 'm/s':
-						msnweather['Windspeed']= _('%.01f ft/s') % (float(line.split('windspeed')[1].split('"')[1].split(' ')[0]) * 3.28)
+						msnweather['Windspeed'] = _('%.01f ft/s') % (float(line.split('windspeed')[1].split('"')[1].split(' ')[0]) * 3.28)
 					elif windtype == 'fts' and line.split('windspeed')[1].split('"')[1].split(' ')[1] == 'km/h':
-						msnweather['Windspeed']= _('%.01f ft/s') % (float(line.split('windspeed')[1].split('"')[1].split(' ')[0]) * 0.91)
+						msnweather['Windspeed'] = _('%.01f ft/s') % (float(line.split('windspeed')[1].split('"')[1].split(' ')[0]) * 0.91)
 					elif windtype == 'ms' and line.split('windspeed')[1].split('"')[1].split(' ')[1] == 'mph':
 						msnweather['Windspeed'] = _('%.01f ft/s') % (float(line.split('windspeed')[1].split('"')[1].split(' ')[0]) * 1.47)
 # mp/h
@@ -705,8 +707,8 @@ class MSNWeather2(Poll, Converter, object):
 				pass
 #
 		PI = 3.14159265359
-		DEG2RAD = PI / 180 # радианы
-		RAD2DEG = 180 / PI # градусы
+		DEG2RAD = PI / 180  # радианы
+		RAD2DEG = 180 / PI  # градусы
 		try:
 			long = float(longitude)
 			lat = float(latitude)
@@ -724,25 +726,25 @@ class MSNWeather2(Poll, Converter, object):
 		JDN = day + int(365.25 * (year + 4716)) + int(30.6001 * (month + 1)) + 2 - int(year / 100) + int(year / 400) - 1524.5
 		JD = JDN + UT / 24
 # Звездное время
-		T = (JDN - 2451545) / 36525 # юлианское столетие на полночь по Гринвичу
-		STT = math.fmod((6.697374558333 + 2400.0513369072223 * T + 0.0000258622 * T * T - 0.00000000172 * T * T * T), 24) # звёздное время в Гринвиче в полночь
-		ST = math.fmod((STT + UT * 1.0027379093 - zone * 1.0027379093 + long / 15), 24) # местное звёздное время на момент местного времени
+		T = (JDN - 2451545) / 36525  # юлианское столетие на полночь по Гринвичу
+		STT = math.fmod((6.697374558333 + 2400.0513369072223 * T + 0.0000258622 * T * T - 0.00000000172 * T * T * T), 24)  # звёздное время в Гринвиче в полночь
+		ST = math.fmod((STT + UT * 1.0027379093 - zone * 1.0027379093 + long / 15), 24)  # местное звёздное время на момент местного времени
 		if ST < 0:
 			ST = ST + 24
-		ST = ST * 15 # звёздное время на момент рассчёта в градусах
+		ST = ST * 15  # звёздное время на момент рассчёта в градусах
 # Восход, закат, кульминация
 # Орбита Земли
 		T = (JDN - 2451545) / 36525
-		LS = 280.4664568 + 36000.7697509 * T + 0.0003032 * T * T + 0.00000002 * T * T * T # ср долгота
-		MS = 357.5291092 + 35999.0502909 * T - 0.0001537 * T * T - 0.00000004 * T * T * T # ср аномалия
-		ES = 0.016708634 - 0.000042037 * T - 0.0000001267 * T * T # эксцентриситет орбиты
-		EPS = 23.43929111 - 0.01300416667 * T - 0.00000016389 * T * T + 0.00000050361 * T * T * T # наклон эклиптики
+		LS = 280.4664568 + 36000.7697509 * T + 0.0003032 * T * T + 0.00000002 * T * T * T  # ср долгота
+		MS = 357.5291092 + 35999.0502909 * T - 0.0001537 * T * T - 0.00000004 * T * T * T  # ср аномалия
+		ES = 0.016708634 - 0.000042037 * T - 0.0000001267 * T * T  # эксцентриситет орбиты
+		EPS = 23.43929111 - 0.01300416667 * T - 0.00000016389 * T * T + 0.00000050361 * T * T * T  # наклон эклиптики
 
 		CS = (1.914602 - 0.004817 * T - 0.000014 * T * T) * math.sin(MS * DEG2RAD)\
 			+ (0.019993 - 0.000101 * T) * math.sin(2 * MS * DEG2RAD)\
-			+ 0.000289 * math.sin(3 * MS * DEG2RAD) # уравнение центра
-		DS = (1.000001018 * (1 - ES * ES)) / (ES * math.cos((MS + CS) * DEG2RAD) + 1) # расстояние до солнца в а.е.
-		SLong = LS + CS - (20.4898 / 3600 / DS) # истинная долгота солнца
+			+ 0.000289 * math.sin(3 * MS * DEG2RAD)  # уравнение центра
+		DS = (1.000001018 * (1 - ES * ES)) / (ES * math.cos((MS + CS) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
+		SLong = LS + CS - (20.4898 / 3600 / DS)  # истинная долгота солнца
 
 		# гелиоцентрические координаты
 		wP3 = 288.064
@@ -750,8 +752,8 @@ class MSNWeather2(Poll, Converter, object):
 		XE = DS * math.cos(WP3 * DEG2RAD) * math.cos((wP3 + MS) * DEG2RAD)
 		YE = DS * math.sin(WP3 * DEG2RAD) * math.cos((wP3 + MS) * DEG2RAD)
 		# эклиптические координаты
-		DEC = math.asin(math.sin(EPS * DEG2RAD) * math.sin(SLong * DEG2RAD)) * RAD2DEG # склонение
-		ALFA = (7.53 * math.cos(LS * DEG2RAD) + 1.5 * math.sin(LS * DEG2RAD) - 9.87 * math.sin(2 * LS * DEG2RAD)) / 60 # уравнение времени
+		DEC = math.asin(math.sin(EPS * DEG2RAD) * math.sin(SLong * DEG2RAD)) * RAD2DEG  # склонение
+		ALFA = (7.53 * math.cos(LS * DEG2RAD) + 1.5 * math.sin(LS * DEG2RAD) - 9.87 * math.sin(2 * LS * DEG2RAD)) / 60  # уравнение времени
 		BETA = math.acos((math.cos(90.85 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG
 		SSS = ALFA + (180 - long) / 15 + zone
 # Время восхода/захода
@@ -793,11 +795,11 @@ class MSNWeather2(Poll, Converter, object):
 		MP7 = 72.64878 + 428.37911 * T + 0.000079 * T * T
 		MP8 = 37.73063 + 218.46134 * T - 0.000070 * T * T
 # Орбита меркурия
-		LP1 = 178.179078 + 149474.07078 * T + 0.0003011 * T * T # ср долгота L
-		wP1 = 28.753753 + 0.3702806 * T + 0.0001208 * T * T # аргумент перигелия w
-		WP1 = 47.145944 + 1.1852083 * T + 0.0001739 * T * T # долгота восходящего узла W
-		IP1 = 7.002881 + 0.0018608 * T - 0.0000183 * T * T # наклон на плоскости эклиптики i
-		EP1 = 0.20561421 + 0.00002046 * T - 0.000000030 * T * T # эксцентриситет орбиты e
+		LP1 = 178.179078 + 149474.07078 * T + 0.0003011 * T * T  # ср долгота L
+		wP1 = 28.753753 + 0.3702806 * T + 0.0001208 * T * T  # аргумент перигелия w
+		WP1 = 47.145944 + 1.1852083 * T + 0.0001739 * T * T  # долгота восходящего узла W
+		IP1 = 7.002881 + 0.0018608 * T - 0.0000183 * T * T  # наклон на плоскости эклиптики i
+		EP1 = 0.20561421 + 0.00002046 * T - 0.000000030 * T * T  # эксцентриситет орбиты e
 
 		EL = 0.00204 * math.cos((5 * MP2 - 2 * MP1 + 12.220) * DEG2RAD)\
 			 + 0.00103 * math.cos((2 * MP2 - MP1 - 160.692) * DEG2RAD)\
@@ -805,9 +807,9 @@ class MSNWeather2(Poll, Converter, object):
 			 + 0.00078 * math.cos((5 * MP2 - 3 * MP1 + 10.137) * DEG2RAD)
 
 		LP = LP1 + EL
-		M0 = math.fmod(174.795 + 4.092317 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP1 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (0.3870986 * (1 - EP1 * EP1)) / (EP1 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(174.795 + 4.092317 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP1 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (0.3870986 * (1 - EP1 * EP1)) / (EP1 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP1 * DEG2RAD) * math.cos((wP1 + MP) * DEG2RAD) - math.sin(WP1 * DEG2RAD) * math.cos(IP1 * DEG2RAD) * math.sin((wP1 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP1 * DEG2RAD) * math.cos((wP1 + MP) * DEG2RAD) + math.cos(WP1 * DEG2RAD) * math.cos(IP1 * DEG2RAD) * math.sin((wP1 + MP) * DEG2RAD))
@@ -817,14 +819,14 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
-		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG # часовой угол
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
+		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG  # часовой угол
 		SPR = math.fmod((RA - BETA + long - STT * 15 - zone * 15 * 1.0027379093) / 15 * 0.997269566423530, 24)
 		if SPR < 0:
 			SPR = SPR + 24
@@ -866,11 +868,11 @@ class MSNWeather2(Poll, Converter, object):
 		else:
 			P1Sx = ''
 # Орбита венеры
-		LP2 = 342.767053 + 58519.21191 * T + 0.0003097 * T * T # ср долгота L
-		wP2 = 54.384186 + 0.5081861 * T - 0.0013864 * T * T # аргумент перигелия w
-		WP2 = 75.779647 + 0.8998500 * T + 0.0004100 * T * T # долгота восходящего узла W
-		IP2 = 3.393631 + 0.0010058 * T - 0.0000010 * T * T # наклон на плоскости эклиптики i
-		EP2 = 0.00682069 - 0.00004774 * T + 0.000000091 * T * T # эксцентриситет орбиты e
+		LP2 = 342.767053 + 58519.21191 * T + 0.0003097 * T * T  # ср долгота L
+		wP2 = 54.384186 + 0.5081861 * T - 0.0013864 * T * T  # аргумент перигелия w
+		WP2 = 75.779647 + 0.8998500 * T + 0.0004100 * T * T  # долгота восходящего узла W
+		IP2 = 3.393631 + 0.0010058 * T - 0.0000010 * T * T  # наклон на плоскости эклиптики i
+		EP2 = 0.00682069 - 0.00004774 * T + 0.000000091 * T * T  # эксцентриситет орбиты e
 
 		EL = 0.00313 * math.cos((2 * MP3 - 2 * MP2 - 148.225) * DEG2RAD)\
 			+ 0.00198 * math.cos((3 * MP3 - 3 * MP2 + 2.565) * DEG2RAD)\
@@ -881,9 +883,9 @@ class MSNWeather2(Poll, Converter, object):
 		CP = 0.00077 * math.sin((237.24 + 150.27 * T) * DEG2RAD)
 
 		LP = LP2 + EL + CP
-		M0 = math.fmod(50.416 + 1.602136 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP2 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (0.7233316 * (1 - EP2 * EP2)) / (EP2 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(50.416 + 1.602136 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP2 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (0.7233316 * (1 - EP2 * EP2)) / (EP2 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP2 * DEG2RAD) * math.cos((wP2 + MP) * DEG2RAD) - math.sin(WP2 * DEG2RAD) * math.cos(IP2 * DEG2RAD) * math.sin((wP2 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP2 * DEG2RAD) * math.cos((wP2 + MP) * DEG2RAD) + math.cos(WP2 * DEG2RAD) * math.cos(IP2 * DEG2RAD) * math.sin((wP2 + MP) * DEG2RAD))
@@ -893,14 +895,14 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
-		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG # часовой угол
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
+		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG  # часовой угол
 		SPR = math.fmod((RA - BETA + long - STT * 15 - zone * 15 * 1.0027379093) / 15 * 0.997269566423530, 24)
 		if SPR < 0:
 			SPR = SPR + 24
@@ -942,11 +944,11 @@ class MSNWeather2(Poll, Converter, object):
 		else:
 			P2Sx = ''
 # Орбита марса
-		LP4 = 293.737334 + 19141.69551 * T + 0.0003107 * T * T # ср долгота L
-		wP4 = 285.431761 + 1.0697667 * T + 0.0001313 * T * T + 0.00000414 * T * T * T # аргумент перигелия w
-		WP4 = 48.786442 + 0.7709917 * T - 0.0000014 * T * T - 0.00000533 * T * T * T # долгота восходящего узла W
-		IP4 = 1.850333 - 0.0006750 * T + 0.0000126 * T * T # наклон на плоскости эклиптики i
-		EP4 = 0.09331290 + 0.000092064 * T - 0.000000077 * T * T # эксцентриситет орбиты e
+		LP4 = 293.737334 + 19141.69551 * T + 0.0003107 * T * T  # ср долгота L
+		wP4 = 285.431761 + 1.0697667 * T + 0.0001313 * T * T + 0.00000414 * T * T * T  # аргумент перигелия w
+		WP4 = 48.786442 + 0.7709917 * T - 0.0000014 * T * T - 0.00000533 * T * T * T  # долгота восходящего узла W
+		IP4 = 1.850333 - 0.0006750 * T + 0.0000126 * T * T  # наклон на плоскости эклиптики i
+		EP4 = 0.09331290 + 0.000092064 * T - 0.000000077 * T * T  # эксцентриситет орбиты e
 
 		EL = 0.00705 * math.cos((MP5 - MP4 - 48.958) * DEG2RAD)\
 			+ 0.00607 * math.cos((2 * MP5 - MP4 - 188.350) * DEG2RAD)\
@@ -958,13 +960,13 @@ class MSNWeather2(Poll, Converter, object):
 			+ 0.00136 * math.cos((2 * MP3 - 4 * MP4 + 154.093) * DEG2RAD)\
 			+ 0.00104 * math.cos((MP5 + 17.618) * DEG2RAD)
 
-		CP = (- 0.01133 * math.sin((3 * MP5 - 8 * MP4 + 4 * MP3) * DEG2RAD)\
-			- 0.00933 * math.cos((3 * MP5 - 8 * MP4 + 4 * MP3) * DEG2RAD)) # уравнение центра
+		CP = (- 0.01133 * math.sin((3 * MP5 - 8 * MP4 + 4 * MP3) * DEG2RAD)
+			- 0.00933 * math.cos((3 * MP5 - 8 * MP4 + 4 * MP3) * DEG2RAD))  # уравнение центра
 
 		LP = LP4 + EL + CP
-		M0 = math.fmod(19.373 + 0.524039 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP4 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (1.5236883 * (1 - EP4 * EP4)) / (EP4 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(19.373 + 0.524039 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP4 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (1.5236883 * (1 - EP4 * EP4)) / (EP4 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP4 * DEG2RAD) * math.cos((wP4 + MP) * DEG2RAD) - math.sin(WP4 * DEG2RAD) * math.cos(IP4 * DEG2RAD) * math.sin((wP4 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP4 * DEG2RAD) * math.cos((wP4 + MP) * DEG2RAD) + math.cos(WP4 * DEG2RAD) * math.cos(IP4 * DEG2RAD) * math.sin((wP4 + MP) * DEG2RAD))
@@ -974,14 +976,14 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
-		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG # часовой угол
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
+		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG  # часовой угол
 		SPR = math.fmod((RA - BETA + long - STT * 15 - zone * 15 * 1.0027379093) / 15 * 0.997269566423530, 24)
 		if SPR < 0:
 			SPR = SPR + 24
@@ -1023,11 +1025,11 @@ class MSNWeather2(Poll, Converter, object):
 		else:
 			P4Sx = ''
 # Орбита юпитера
-		LP5 = 238.049257 + 3036.301986 * T + 0.0003347 * T * T - 0.00000165 * T * T * T # ср долгота L
-		wP5 = 273.277558 + 0.5994317 * T + 0.00070405 * T * T + 0.00000508 * T * T * T # аргумент перигелия w
-		WP5 = 99.443414 + 1.0105300 * T + 0.00035222 * T * T - 0.00000851 * T * T * T # долгота восходящего узла W
-		IP5 = 1.308736 - 0.0056961 * T + 0.0000039 * T * T # наклон на плоскости эклиптики i
-		EP5 = 0.04833475 + 0.000164180 * T - 0.0000004676 * T * T - 0.0000000017 * T * T * T # эксцентриситет орбиты e
+		LP5 = 238.049257 + 3036.301986 * T + 0.0003347 * T * T - 0.00000165 * T * T * T  # ср долгота L
+		wP5 = 273.277558 + 0.5994317 * T + 0.00070405 * T * T + 0.00000508 * T * T * T  # аргумент перигелия w
+		WP5 = 99.443414 + 1.0105300 * T + 0.00035222 * T * T - 0.00000851 * T * T * T  # долгота восходящего узла W
+		IP5 = 1.308736 - 0.0056961 * T + 0.0000039 * T * T  # наклон на плоскости эклиптики i
+		EP5 = 0.04833475 + 0.000164180 * T - 0.0000004676 * T * T - 0.0000000017 * T * T * T  # эксцентриситет орбиты e
 
 		NJ = T / 5.0 + 0.1
 		PJ = 237.47555 + 3034.9061 * T
@@ -1063,9 +1065,9 @@ class MSNWeather2(Poll, Converter, object):
 			+ 0.003342 * math.cos(2 * ZJ * DEG2RAD) * math.cos(2 * QJ * DEG2RAD)
 
 		LP = LP5 + EL
-		M0 = math.fmod(20.020 + 0.083056 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP5 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (5.202561 * (1 - EP5 * EP5)) / (EP5 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(20.020 + 0.083056 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP5 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (5.202561 * (1 - EP5 * EP5)) / (EP5 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP5 * DEG2RAD) * math.cos((wP5 + MP) * DEG2RAD) - math.sin(WP5 * DEG2RAD) * math.cos(IP5 * DEG2RAD) * math.sin((wP5 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP5 * DEG2RAD) * math.cos((wP5 + MP) * DEG2RAD) + math.cos(WP5 * DEG2RAD) * math.cos(IP5 * DEG2RAD) * math.sin((wP5 + MP) * DEG2RAD))
@@ -1075,14 +1077,14 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
-		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG # часовой угол
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
+		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG  # часовой угол
 		SPR = math.fmod((RA - BETA + long - STT * 15 - zone * 15 * 1.0027379093) / 15 * 0.997269566423530, 24)
 		if SPR < 0:
 			SPR = SPR + 24
@@ -1124,11 +1126,11 @@ class MSNWeather2(Poll, Converter, object):
 		else:
 			P5Sx = ''
 # Орбита сатурна
-		LP6 = 266.564377 + 1223.509884 * T + 0.0003245 * T * T - 0.0000058 * T * T * T # ср долгота L
-		wP6 = 338.307800 + 1.0852207 * T + 0.00097854 * T * T + 0.00000992 * T * T * T # аргумент перигелия w
-		WP6 = 112.790414 + 0.8731951 * T - 0.00015218 * T * T - 0.00000531 * T * T * T # долгота восходящего узла W
-		IP6 = 2.492519 - 0.0039189 * T - 0.00001549 * T * T + 0.00000004 * T * T * T # наклон на плоскости эклиптики i
-		EP6 = 0.05589232 - 0.00034550 * T - 0.000000728 * T * T + 0.00000000074 * T * T * T # эксцентриситет орбиты e
+		LP6 = 266.564377 + 1223.509884 * T + 0.0003245 * T * T - 0.0000058 * T * T * T  # ср долгота L
+		wP6 = 338.307800 + 1.0852207 * T + 0.00097854 * T * T + 0.00000992 * T * T * T  # аргумент перигелия w
+		WP6 = 112.790414 + 0.8731951 * T - 0.00015218 * T * T - 0.00000531 * T * T * T  # долгота восходящего узла W
+		IP6 = 2.492519 - 0.0039189 * T - 0.00001549 * T * T + 0.00000004 * T * T * T  # наклон на плоскости эклиптики i
+		EP6 = 0.05589232 - 0.00034550 * T - 0.000000728 * T * T + 0.00000000074 * T * T * T  # эксцентриситет орбиты e
 
 		NS = T / 5.0 + 0.1
 		PS = 237.47555 + 3034.9061 * T
@@ -1167,9 +1169,9 @@ class MSNWeather2(Poll, Converter, object):
 			- 0.007528 * math.cos(3 * PSI * DEG2RAD) * math.cos(2 * QS * DEG2RAD)
 
 		LP = LP6 + EL
-		M0 = math.fmod(317.021 + 0.033371 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP6 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (9.554747 * (1 - EP6 * EP6)) / (EP6 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(317.021 + 0.033371 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP6 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (9.554747 * (1 - EP6 * EP6)) / (EP6 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP6 * DEG2RAD) * math.cos((wP6 + MP) * DEG2RAD) - math.sin(WP6 * DEG2RAD) * math.cos(IP6 * DEG2RAD) * math.sin((wP6 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP6 * DEG2RAD) * math.cos((wP6 + MP) * DEG2RAD) + math.cos(WP6 * DEG2RAD) * math.cos(IP6 * DEG2RAD) * math.sin((wP6 + MP) * DEG2RAD))
@@ -1179,14 +1181,14 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
-		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG # часовой угол
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
+		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG  # часовой угол
 		SPR = math.fmod((RA - BETA + long - STT * 15 - zone * 15 * 1.0027379093) / 15 * 0.997269566423530, 24)
 		if SPR < 0:
 			SPR = SPR + 24
@@ -1228,11 +1230,11 @@ class MSNWeather2(Poll, Converter, object):
 		else:
 			P6Sx = ''
 # Орбита урана
-		LP7 = 244.197470 + 429.863546 * T + 0.0003160 * T * T - 0.00000060 * T * T * T # ср долгота L
-		wP7 = 98.071581 + 0.9857650 * T - 0.0010745 * T * T - 0.00000061 * T * T * T # аргумент перигелия w
-		WP7 = 73.477111 + 0.4986678 * T + 0.0013117 * T * T # долгота восходящего узла W
-		IP7 = 0.772464 + 0.0006253 * T + 0.0000395 * T * T # наклон на плоскости эклиптики i
-		EP7 = 0.0463444 - 0.00002658 * T + 0.000000077 * T * T # эксцентриситет орбиты e
+		LP7 = 244.197470 + 429.863546 * T + 0.0003160 * T * T - 0.00000060 * T * T * T  # ср долгота L
+		wP7 = 98.071581 + 0.9857650 * T - 0.0010745 * T * T - 0.00000061 * T * T * T  # аргумент перигелия w
+		WP7 = 73.477111 + 0.4986678 * T + 0.0013117 * T * T  # долгота восходящего узла W
+		IP7 = 0.772464 + 0.0006253 * T + 0.0000395 * T * T  # наклон на плоскости эклиптики i
+		EP7 = 0.0463444 - 0.00002658 * T + 0.000000077 * T * T  # эксцентриситет орбиты e
 
 		NU = T / 5.0 + 0.1
 		PU = 237.47555 + 3034.9061 * T
@@ -1249,9 +1251,9 @@ class MSNWeather2(Poll, Converter, object):
 			+ 0.008122 * math.sin(WU)
 
 		LP = LP7 + EL
-		M0 = math.fmod(141.050 + 0.011698 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP7 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (19.21814 * (1 - EP7 * EP7)) / (EP7 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(141.050 + 0.011698 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP7 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (19.21814 * (1 - EP7 * EP7)) / (EP7 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP7 * DEG2RAD) * math.cos((wP7 + MP) * DEG2RAD) - math.sin(WP7 * DEG2RAD) * math.cos(IP7 * DEG2RAD) * math.sin((wP7 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP7 * DEG2RAD) * math.cos((wP7 + MP) * DEG2RAD) + math.cos(WP7 * DEG2RAD) * math.cos(IP7 * DEG2RAD) * math.sin((wP7 + MP) * DEG2RAD))
@@ -1261,14 +1263,14 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
-		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG # часовой угол
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
+		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG  # часовой угол
 		SPR = math.fmod((RA - BETA + long - STT * 15 - zone * 15 * 1.0027379093) / 15 * 0.997269566423530, 24)
 		if SPR < 0:
 			SPR = SPR + 24
@@ -1310,11 +1312,11 @@ class MSNWeather2(Poll, Converter, object):
 		else:
 			P7Sx = ''
 # Орбита нептуна
-		LP8 = 84.457994 + 219.885914 * T + 0.0003205 * T * T - 0.00000060 * T * T * T # ср долгота L
-		wP8 = 276.045975 + 0.3256394 * T + 0.00014095 * T * T + 0.000004113 * T * T * T # аргумент перигелия w
-		WP8 = 130.681389 + 1.0989350 * T + 0.00024987 * T * T - 0.000004718 * T * T * T # долгота восходящего узла W
-		IP8 = 1.779242 - 0.0095436 * T - 0.0000091 * T * T # наклон на плоскости эклиптики i
-		EP8 = 0.00899704 + 0.000006330 * T - 0.000000002 * T * T # эксцентриситет орбиты e
+		LP8 = 84.457994 + 219.885914 * T + 0.0003205 * T * T - 0.00000060 * T * T * T  # ср долгота L
+		wP8 = 276.045975 + 0.3256394 * T + 0.00014095 * T * T + 0.000004113 * T * T * T  # аргумент перигелия w
+		WP8 = 130.681389 + 1.0989350 * T + 0.00024987 * T * T - 0.000004718 * T * T * T  # долгота восходящего узла W
+		IP8 = 1.779242 - 0.0095436 * T - 0.0000091 * T * T  # наклон на плоскости эклиптики i
+		EP8 = 0.00899704 + 0.000006330 * T - 0.000000002 * T * T  # эксцентриситет орбиты e
 
 		NN = T / 5.0 + 0.1
 		SN = 243.51721 + 428.4677 * T
@@ -1326,9 +1328,9 @@ class MSNWeather2(Poll, Converter, object):
 			- 0.024286 * math.sin(2 * HN * DEG2RAD)
 
 		LP = LP8 + EL
-		M0 = math.fmod(256.225 + 0.005965 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP8 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (30.10957 * (1 - EP8 * EP8)) / (EP8 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(256.225 + 0.005965 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP8 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (30.10957 * (1 - EP8 * EP8)) / (EP8 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP8 * DEG2RAD) * math.cos((wP8 + MP) * DEG2RAD) - math.sin(WP8 * DEG2RAD) * math.cos(IP8 * DEG2RAD) * math.sin((wP8 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP8 * DEG2RAD) * math.cos((wP8 + MP) * DEG2RAD) + math.cos(WP8 * DEG2RAD) * math.cos(IP8 * DEG2RAD) * math.sin((wP8 + MP) * DEG2RAD))
@@ -1338,14 +1340,14 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
-		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG # часовой угол
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
+		BETA = math.acos((math.cos(90.35 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG  # часовой угол
 		SPR = math.fmod((RA - BETA + long - STT * 15 - zone * 15 * 1.0027379093) / 15 * 0.997269566423530, 24)
 		if SPR < 0:
 			SPR = SPR + 24
@@ -1387,12 +1389,12 @@ class MSNWeather2(Poll, Converter, object):
 		else:
 			P8Sx = ''
 # Орбита луны
-		LM = 218.3164477 + 481267.88123421 * T - 0.0015786 * T * T + T * T * T / 538841 - T * T * T * T / 65194000 # ср долгота луны
-		FM = 93.272095 + 483202.0175233 * T - 0.0036539 * T * T - T * T * T / 3526000 + T * T * T * T / 863310000 # ср аргумент широты луны
-		DM = 297.8501921 + 445267.114034 * T - 0.0018819 * T * T + T * T * T / 545868 - T * T * T * T / 113065000 # ср элонгация луны
-		MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000 # ср солнечная аномалия
-		MM = 134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699 - T * T * T * T / 14712000 # ср лунная аномалия
-		EM = 1 - 0.002516 * T - 0.0000074 * T * T # поправка на изменяющийся эксцентриситет
+		LM = 218.3164477 + 481267.88123421 * T - 0.0015786 * T * T + T * T * T / 538841 - T * T * T * T / 65194000  # ср долгота луны
+		FM = 93.272095 + 483202.0175233 * T - 0.0036539 * T * T - T * T * T / 3526000 + T * T * T * T / 863310000  # ср аргумент широты луны
+		DM = 297.8501921 + 445267.114034 * T - 0.0018819 * T * T + T * T * T / 545868 - T * T * T * T / 113065000  # ср элонгация луны
+		MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000  # ср солнечная аномалия
+		MM = 134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699 - T * T * T * T / 14712000  # ср лунная аномалия
+		EM = 1 - 0.002516 * T - 0.0000074 * T * T  # поправка на изменяющийся эксцентриситет
 
 		EL = 6.289 * math.sin(MM * DEG2RAD)\
 			+ 1.274 * math.sin((2 * DM - MM) * DEG2RAD)\
@@ -1419,14 +1421,14 @@ class MSNWeather2(Poll, Converter, object):
 			+ 0.009 * math.sin((2 * DM + MM - FM) * DEG2RAD)\
 			+ 0.009 * math.sin((2 * MM - FM) * DEG2RAD)
 
-		MLat = math.fmod(EB, 360) # широта
-		MLong = math.fmod(LM + EL, 360) # долгота
+		MLat = math.fmod(EB, 360)  # широта
+		MLong = math.fmod(LM + EL, 360)  # долгота
 
-		RA = math.atan2((math.sin(MLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(MLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(MLong * DEG2RAD)) * RAD2DEG # прямое восхождение
-		DEC = math.asin(math.sin(MLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(MLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(MLong * DEG2RAD)) * RAD2DEG # склонение
+		RA = math.atan2((math.sin(MLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(MLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(MLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
+		DEC = math.asin(math.sin(MLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(MLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(MLong * DEG2RAD)) * RAD2DEG  # склонение
 		if RA < 0:
 			RA = RA + 2 * PI
-		BETA = math.acos((math.cos(89.55 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG # часовой угол
+		BETA = math.acos((math.cos(89.55 * DEG2RAD) - math.sin(DEC * DEG2RAD) * math.sin(lat * DEG2RAD)) / (math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD))) * RAD2DEG  # часовой угол
 		SMR = math.fmod((RA - BETA - long - STT * 15 + zone * 15 * 1.0027379093) / 15 * 0.997269566423530, 24)
 		if SMR < 0:
 			SMR = SMR + 24
@@ -1479,11 +1481,11 @@ class MSNWeather2(Poll, Converter, object):
 		MP7 = 72.64878 + 428.37911 * T + 0.000079 * T * T
 		MP8 = 37.73063 + 218.46134 * T - 0.000070 * T * T
 # Орбита меркурия
-		LP1 = 178.179078 + 149474.07078 * T + 0.0003011 * T * T # ср долгота L
-		wP1 = 28.753753 + 0.3702806 * T + 0.0001208 * T * T # аргумент перигелия w
-		WP1 = 47.145944 + 1.1852083 * T + 0.0001739 * T * T # долгота восходящего узла W
-		IP1 = 7.002881 + 0.0018608 * T - 0.0000183 * T * T # наклон на плоскости эклиптики i
-		EP1 = 0.20561421 + 0.00002046 * T - 0.000000030 * T * T # эксцентриситет орбиты e
+		LP1 = 178.179078 + 149474.07078 * T + 0.0003011 * T * T  # ср долгота L
+		wP1 = 28.753753 + 0.3702806 * T + 0.0001208 * T * T  # аргумент перигелия w
+		WP1 = 47.145944 + 1.1852083 * T + 0.0001739 * T * T  # долгота восходящего узла W
+		IP1 = 7.002881 + 0.0018608 * T - 0.0000183 * T * T  # наклон на плоскости эклиптики i
+		EP1 = 0.20561421 + 0.00002046 * T - 0.000000030 * T * T  # эксцентриситет орбиты e
 
 		EL = 0.00204 * math.cos((5 * MP2 - 2 * MP1 + 12.220) * DEG2RAD)\
 			 + 0.00103 * math.cos((2 * MP2 - MP1 - 160.692) * DEG2RAD)\
@@ -1491,9 +1493,9 @@ class MSNWeather2(Poll, Converter, object):
 			 + 0.00078 * math.cos((5 * MP2 - 3 * MP1 + 10.137) * DEG2RAD)
 
 		LP = LP1 + EL
-		M0 = math.fmod(174.795 + 4.092317 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP1 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (0.3870986 * (1 - EP1 * EP1)) / (EP1 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(174.795 + 4.092317 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP1 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (0.3870986 * (1 - EP1 * EP1)) / (EP1 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP1 * DEG2RAD) * math.cos((wP1 + MP) * DEG2RAD) - math.sin(WP1 * DEG2RAD) * math.cos(IP1 * DEG2RAD) * math.sin((wP1 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP1 * DEG2RAD) * math.cos((wP1 + MP) * DEG2RAD) + math.cos(WP1 * DEG2RAD) * math.cos(IP1 * DEG2RAD) * math.sin((wP1 + MP) * DEG2RAD))
@@ -1503,24 +1505,24 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
 		TH = ST - RA
-		Z  = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG # косинус зенитного угла
-		H = 90 - Z # угол места
-		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180 # азимут + 180
+		Z = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG  # косинус зенитного угла
+		H = 90 - Z  # угол места
+		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180  # азимут + 180
 		P1A = round(AZ, 1)
 # Орбита венеры
-		LP2 = 342.767053 + 58519.21191 * T + 0.0003097 * T * T # ср долгота L
-		wP2 = 54.384186 + 0.5081861 * T - 0.0013864 * T * T # аргумент перигелия w
-		WP2 = 75.779647 + 0.8998500 * T + 0.0004100 * T * T # долгота восходящего узла W
-		IP2 = 3.393631 + 0.0010058 * T - 0.0000010 * T * T # наклон на плоскости эклиптики i
-		EP2 = 0.00682069 - 0.00004774 * T + 0.000000091 * T * T # эксцентриситет орбиты e
+		LP2 = 342.767053 + 58519.21191 * T + 0.0003097 * T * T  # ср долгота L
+		wP2 = 54.384186 + 0.5081861 * T - 0.0013864 * T * T  # аргумент перигелия w
+		WP2 = 75.779647 + 0.8998500 * T + 0.0004100 * T * T  # долгота восходящего узла W
+		IP2 = 3.393631 + 0.0010058 * T - 0.0000010 * T * T  # наклон на плоскости эклиптики i
+		EP2 = 0.00682069 - 0.00004774 * T + 0.000000091 * T * T  # эксцентриситет орбиты e
 
 		EL = 0.00313 * math.cos((2 * MP3 - 2 * MP2 - 148.225) * DEG2RAD)\
 			+ 0.00198 * math.cos((3 * MP3 - 3 * MP2 + 2.565) * DEG2RAD)\
@@ -1531,9 +1533,9 @@ class MSNWeather2(Poll, Converter, object):
 		CP = 0.00077 * math.sin((237.24 + 150.27 * T) * DEG2RAD)
 
 		LP = LP2 + EL + CP
-		M0 = math.fmod(50.416 + 1.602136 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP2 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (0.7233316 * (1 - EP2 * EP2)) / (EP2 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(50.416 + 1.602136 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP2 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (0.7233316 * (1 - EP2 * EP2)) / (EP2 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP2 * DEG2RAD) * math.cos((wP2 + MP) * DEG2RAD) - math.sin(WP2 * DEG2RAD) * math.cos(IP2 * DEG2RAD) * math.sin((wP2 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP2 * DEG2RAD) * math.cos((wP2 + MP) * DEG2RAD) + math.cos(WP2 * DEG2RAD) * math.cos(IP2 * DEG2RAD) * math.sin((wP2 + MP) * DEG2RAD))
@@ -1543,24 +1545,24 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # гсклонение
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # гсклонение
 		TH = ST - RA
-		Z  = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG # косинус зенитного угла
-		H = 90 - Z # угол места
-		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180 # азимут + 180
+		Z = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG  # косинус зенитного угла
+		H = 90 - Z  # угол места
+		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180  # азимут + 180
 		P2A = round(AZ, 1)
 # Орбита марса
-		LP4 = 293.737334 + 19141.69551 * T + 0.0003107 * T * T # ср долгота L
-		wP4 = 285.431761 + 1.0697667 * T + 0.0001313 * T * T + 0.00000414 * T * T * T # аргумент перигелия w
-		WP4 = 48.786442 + 0.7709917 * T - 0.0000014 * T * T - 0.00000533 * T * T * T # долгота восходящего узла W
-		IP4 = 1.850333 - 0.0006750 * T + 0.0000126 * T * T # наклон на плоскости эклиптики i
-		EP4 = 0.09331290 + 0.000092064 * T - 0.000000077 * T * T # эксцентриситет орбиты e
+		LP4 = 293.737334 + 19141.69551 * T + 0.0003107 * T * T  # ср долгота L
+		wP4 = 285.431761 + 1.0697667 * T + 0.0001313 * T * T + 0.00000414 * T * T * T  # аргумент перигелия w
+		WP4 = 48.786442 + 0.7709917 * T - 0.0000014 * T * T - 0.00000533 * T * T * T  # долгота восходящего узла W
+		IP4 = 1.850333 - 0.0006750 * T + 0.0000126 * T * T  # наклон на плоскости эклиптики i
+		EP4 = 0.09331290 + 0.000092064 * T - 0.000000077 * T * T  # эксцентриситет орбиты e
 
 		EL = 0.00705 * math.cos((MP5 - MP4 - 48.958) * DEG2RAD)\
 			+ 0.00607 * math.cos((2 * MP5 - MP4 - 188.350) * DEG2RAD)\
@@ -1572,13 +1574,13 @@ class MSNWeather2(Poll, Converter, object):
 			+ 0.00136 * math.cos((2 * MP3 - 4 * MP4 + 154.093) * DEG2RAD)\
 			+ 0.00104 * math.cos((MP5 + 17.618) * DEG2RAD)
 
-		CP = (- 0.01133 * math.sin((3 * MP5 - 8 * MP4 + 4 * MP3) * DEG2RAD)\
-			- 0.00933 * math.cos((3 * MP5 - 8 * MP4 + 4 * MP3) * DEG2RAD)) # уравнение центра
+		CP = (- 0.01133 * math.sin((3 * MP5 - 8 * MP4 + 4 * MP3) * DEG2RAD)
+			- 0.00933 * math.cos((3 * MP5 - 8 * MP4 + 4 * MP3) * DEG2RAD))  # уравнение центра
 
 		LP = LP4 + EL + CP
-		M0 = math.fmod(19.373 + 0.524039 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP4 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (1.5236883 * (1 - EP4 * EP4)) / (EP4 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(19.373 + 0.524039 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP4 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (1.5236883 * (1 - EP4 * EP4)) / (EP4 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP4 * DEG2RAD) * math.cos((wP4 + MP) * DEG2RAD) - math.sin(WP4 * DEG2RAD) * math.cos(IP4 * DEG2RAD) * math.sin((wP4 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP4 * DEG2RAD) * math.cos((wP4 + MP) * DEG2RAD) + math.cos(WP4 * DEG2RAD) * math.cos(IP4 * DEG2RAD) * math.sin((wP4 + MP) * DEG2RAD))
@@ -1588,24 +1590,24 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
 		TH = ST - RA
-		Z  = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG # косинус зенитного угла
-		H = 90 - Z # угол места
-		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180 # азимут + 180
+		Z = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG  # косинус зенитного угла
+		H = 90 - Z  # угол места
+		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180  # азимут + 180
 		P4A = round(AZ, 1)
 # Орбита юпитера
-		LP5 = 238.049257 + 3036.301986 * T + 0.0003347 * T * T - 0.00000165 * T * T * T # ср долгота L
-		wP5 = 273.277558 + 0.5994317 * T + 0.00070405 * T * T + 0.00000508 * T * T * T # аргумент перигелия w
-		WP5 = 99.443414 + 1.0105300 * T + 0.00035222 * T * T - 0.00000851 * T * T * T # долгота восходящего узла W
-		IP5 = 1.308736 - 0.0056961 * T + 0.0000039 * T * T # наклон на плоскости эклиптики i
-		EP5 = 0.04833475 + 0.000164180 * T - 0.0000004676 * T * T - 0.0000000017 * T * T * T # эксцентриситет орбиты e
+		LP5 = 238.049257 + 3036.301986 * T + 0.0003347 * T * T - 0.00000165 * T * T * T  # ср долгота L
+		wP5 = 273.277558 + 0.5994317 * T + 0.00070405 * T * T + 0.00000508 * T * T * T  # аргумент перигелия w
+		WP5 = 99.443414 + 1.0105300 * T + 0.00035222 * T * T - 0.00000851 * T * T * T  # долгота восходящего узла W
+		IP5 = 1.308736 - 0.0056961 * T + 0.0000039 * T * T  # наклон на плоскости эклиптики i
+		EP5 = 0.04833475 + 0.000164180 * T - 0.0000004676 * T * T - 0.0000000017 * T * T * T  # эксцентриситет орбиты e
 
 		NJ = T / 5.0 + 0.1
 		PJ = 237.47555 + 3034.9061 * T
@@ -1641,9 +1643,9 @@ class MSNWeather2(Poll, Converter, object):
 			+ 0.003342 * math.cos(2 * ZJ * DEG2RAD) * math.cos(2 * QJ * DEG2RAD)
 
 		LP = LP5 + EL
-		M0 = math.fmod(20.020 + 0.083056 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP5 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (5.202561 * (1 - EP5 * EP5)) / (EP5 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(20.020 + 0.083056 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP5 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (5.202561 * (1 - EP5 * EP5)) / (EP5 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP5 * DEG2RAD) * math.cos((wP5 + MP) * DEG2RAD) - math.sin(WP5 * DEG2RAD) * math.cos(IP5 * DEG2RAD) * math.sin((wP5 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP5 * DEG2RAD) * math.cos((wP5 + MP) * DEG2RAD) + math.cos(WP5 * DEG2RAD) * math.cos(IP5 * DEG2RAD) * math.sin((wP5 + MP) * DEG2RAD))
@@ -1653,24 +1655,24 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
 		TH = ST - RA
-		Z  = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG # косинус зенитного угла
-		H = 90 - Z # угол места
-		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180 # азимут + 180
+		Z = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG  # косинус зенитного угла
+		H = 90 - Z  # угол места
+		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180  # азимут + 180
 		P5A = round(AZ, 1)
 # Орбита сатурна
-		LP6 = 266.564377 + 1223.509884 * T + 0.0003245 * T * T - 0.0000058 * T * T * T # ср долгота L
-		wP6 = 338.307800 + 1.0852207 * T + 0.00097854 * T * T + 0.00000992 * T * T * T # аргумент перигелия w
-		WP6 = 112.790414 + 0.8731951 * T - 0.00015218 * T * T - 0.00000531 * T * T * T # долгота восходящего узла W
-		IP6 = 2.492519 - 0.0039189 * T - 0.00001549 * T * T + 0.00000004 * T * T * T # наклон на плоскости эклиптики i
-		EP6 = 0.05589232 - 0.00034550 * T - 0.000000728 * T * T + 0.00000000074 * T * T * T # эксцентриситет орбиты e
+		LP6 = 266.564377 + 1223.509884 * T + 0.0003245 * T * T - 0.0000058 * T * T * T  # ср долгота L
+		wP6 = 338.307800 + 1.0852207 * T + 0.00097854 * T * T + 0.00000992 * T * T * T  # аргумент перигелия w
+		WP6 = 112.790414 + 0.8731951 * T - 0.00015218 * T * T - 0.00000531 * T * T * T  # долгота восходящего узла W
+		IP6 = 2.492519 - 0.0039189 * T - 0.00001549 * T * T + 0.00000004 * T * T * T  # наклон на плоскости эклиптики i
+		EP6 = 0.05589232 - 0.00034550 * T - 0.000000728 * T * T + 0.00000000074 * T * T * T  # эксцентриситет орбиты e
 
 		NS = T / 5.0 + 0.1
 		PS = 237.47555 + 3034.9061 * T
@@ -1709,9 +1711,9 @@ class MSNWeather2(Poll, Converter, object):
 			- 0.007528 * math.cos(3 * PSI * DEG2RAD) * math.cos(2 * QS * DEG2RAD)
 
 		LP = LP6 + EL
-		M0 = math.fmod(317.021 + 0.033371 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP6 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (9.554747 * (1 - EP6 * EP6)) / (EP6 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(317.021 + 0.033371 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP6 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (9.554747 * (1 - EP6 * EP6)) / (EP6 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP6 * DEG2RAD) * math.cos((wP6 + MP) * DEG2RAD) - math.sin(WP6 * DEG2RAD) * math.cos(IP6 * DEG2RAD) * math.sin((wP6 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP6 * DEG2RAD) * math.cos((wP6 + MP) * DEG2RAD) + math.cos(WP6 * DEG2RAD) * math.cos(IP6 * DEG2RAD) * math.sin((wP6 + MP) * DEG2RAD))
@@ -1721,24 +1723,24 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
 		TH = ST - RA
-		Z  = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG # косинус зенитного угла
-		H = 90 - Z # угол места
-		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180 # азимут + 180
+		Z = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG  # косинус зенитного угла
+		H = 90 - Z  # угол места
+		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180  # азимут + 180
 		P6A = round(AZ, 1)
 # Орбита урана
-		LP7 = 244.197470 + 429.863546 * T + 0.0003160 * T * T - 0.00000060 * T * T * T # ср долгота L
-		wP7 = 98.071581 + 0.9857650 * T - 0.0010745 * T * T - 0.00000061 * T * T * T # аргумент перигелия w
-		WP7 = 73.477111 + 0.4986678 * T + 0.0013117 * T * T # долгота восходящего узла W
-		IP7 = 0.772464 + 0.0006253 * T + 0.0000395 * T * T # наклон на плоскости эклиптики i
-		EP7 = 0.0463444 - 0.00002658 * T + 0.000000077 * T * T # эксцентриситет орбиты e
+		LP7 = 244.197470 + 429.863546 * T + 0.0003160 * T * T - 0.00000060 * T * T * T  # ср долгота L
+		wP7 = 98.071581 + 0.9857650 * T - 0.0010745 * T * T - 0.00000061 * T * T * T  # аргумент перигелия w
+		WP7 = 73.477111 + 0.4986678 * T + 0.0013117 * T * T  # долгота восходящего узла W
+		IP7 = 0.772464 + 0.0006253 * T + 0.0000395 * T * T  # наклон на плоскости эклиптики i
+		EP7 = 0.0463444 - 0.00002658 * T + 0.000000077 * T * T  # эксцентриситет орбиты e
 
 		NU = T / 5.0 + 0.1
 		PU = 237.47555 + 3034.9061 * T
@@ -1755,9 +1757,9 @@ class MSNWeather2(Poll, Converter, object):
 			+ 0.008122 * math.sin(WU)
 
 		LP = LP7 + EL
-		M0 = math.fmod(141.050 + 0.011698 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 + EP7 - EP7 * math.sin(M0 * DEG2RAD)/(-1.0 + EP7 * math.cos(M0 * DEG2RAD)) # уравнение Кеплера
-		DP = (19.21814 * (1 - EP7 * EP7)) / (EP7 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(141.050 + 0.011698 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 + EP7 - EP7 * math.sin(M0 * DEG2RAD) / (-1.0 + EP7 * math.cos(M0 * DEG2RAD))  # уравнение Кеплера
+		DP = (19.21814 * (1 - EP7 * EP7)) / (EP7 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP7 * DEG2RAD) * math.cos((wP7 + MP) * DEG2RAD) - math.sin(WP7 * DEG2RAD) * math.cos(IP7 * DEG2RAD) * math.sin((wP7 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP7 * DEG2RAD) * math.cos((wP7 + MP) * DEG2RAD) + math.cos(WP7 * DEG2RAD) * math.cos(IP7 * DEG2RAD) * math.sin((wP7 + MP) * DEG2RAD))
@@ -1767,25 +1769,25 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
 		TH = ST - RA
-		Z  = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG # косинус зенитного угла
-		H = 90 - Z # угол места
-		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180 # азимут + 180
+		Z = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG  # косинус зенитного угла
+		H = 90 - Z  # угол места
+		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180  # азимут + 180
 		P7A = round(AZ, 1)
 # Орбита нептуна
 #		AP8 = 30.10957 # большая полуось орбиты a
-		LP8 = 84.457994 + 219.885914 * T + 0.0003205 * T * T - 0.00000060 * T * T * T # ср долгота L
-		wP8 = 276.045975 + 0.3256394 * T + 0.00014095 * T * T + 0.000004113 * T * T * T # аргумент перигелия w
-		WP8 = 130.681389 + 1.0989350 * T + 0.00024987 * T * T - 0.000004718 * T * T * T # долгота восходящего узла W
-		IP8 = 1.779242 - 0.0095436 * T - 0.0000091 * T * T # наклон на плоскости эклиптики i
-		EP8 = 0.00899704 + 0.000006330 * T - 0.000000002 * T * T # эксцентриситет орбиты e
+		LP8 = 84.457994 + 219.885914 * T + 0.0003205 * T * T - 0.00000060 * T * T * T  # ср долгота L
+		wP8 = 276.045975 + 0.3256394 * T + 0.00014095 * T * T + 0.000004113 * T * T * T  # аргумент перигелия w
+		WP8 = 130.681389 + 1.0989350 * T + 0.00024987 * T * T - 0.000004718 * T * T * T  # долгота восходящего узла W
+		IP8 = 1.779242 - 0.0095436 * T - 0.0000091 * T * T  # наклон на плоскости эклиптики i
+		EP8 = 0.00899704 + 0.000006330 * T - 0.000000002 * T * T  # эксцентриситет орбиты e
 
 		NN = T / 5.0 + 0.1
 		SN = 243.51721 + 428.4677 * T
@@ -1797,9 +1799,9 @@ class MSNWeather2(Poll, Converter, object):
 			- 0.024286 * math.sin(2 * HN * DEG2RAD)
 
 		LP = LP8 + EL
-		M0 = math.fmod(256.225 + 0.005965 * (JDN - 2451545), 360) # ср аномалия
-		MP = M0 - EP8 * math.sin(M0 * DEG2RAD) # уравнение Кеплера
-		DP = (30.10957 * (1 - EP8 * EP8)) / (EP8 * math.cos((MP + LP) * DEG2RAD) + 1) # расстояние до солнца в а.е.
+		M0 = math.fmod(256.225 + 0.005965 * (JDN - 2451545), 360)  # ср аномалия
+		MP = M0 - EP8 * math.sin(M0 * DEG2RAD)  # уравнение Кеплера
+		DP = (30.10957 * (1 - EP8 * EP8)) / (EP8 * math.cos((MP + LP) * DEG2RAD) + 1)  # расстояние до солнца в а.е.
 		# гелиоцентрические координаты
 		XP = DP * (math.cos(WP8 * DEG2RAD) * math.cos((wP8 + MP) * DEG2RAD) - math.sin(WP8 * DEG2RAD) * math.cos(IP8 * DEG2RAD) * math.sin((wP8 + MP) * DEG2RAD))
 		YP = DP * (math.sin(WP8 * DEG2RAD) * math.cos((wP8 + MP) * DEG2RAD) + math.cos(WP8 * DEG2RAD) * math.cos(IP8 * DEG2RAD) * math.sin((wP8 + MP) * DEG2RAD))
@@ -1809,25 +1811,25 @@ class MSNWeather2(Poll, Converter, object):
 		YP = YP - YE
 		ZP = ZP
 		# эклиптические координаты
-		PLong =  math.atan2(YP, XP) * RAD2DEG
+		PLong = math.atan2(YP, XP) * RAD2DEG
 		PLat = math.asin(ZP / math.sqrt(XP * XP + YP * YP + ZP * ZP)) * RAD2DEG
 
-		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		RA = math.atan2((math.sin(PLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(PLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG # склонение
+		DEC = math.asin(math.sin(PLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(PLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(PLong * DEG2RAD)) * RAD2DEG  # склонение
 		TH = ST - RA
-		Z  = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG # косинус зенитного угла
-		H = 90 - Z # угол места
-		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180 # азимут + 180
+		Z = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG  # косинус зенитного угла
+		H = 90 - Z  # угол места
+		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180  # азимут + 180
 		P8A = round(AZ, 1)
 # Фазы луны, расстояние до луны, азимут луны
-		LM = 218.3164477 + 481267.88123421 * T - 0.0015786 * T * T + T * T * T / 538841 - T * T * T * T / 65194000 # ср долгота луны
-		FM = 93.272095 + 483202.0175233 * T - 0.0036539 * T * T - T * T * T / 3526000 + T * T * T * T / 863310000 # ср аргумент широты луны
-		DM = 297.8501921 + 445267.114034 * T - 0.0018819 * T * T + T * T * T / 545868 - T * T * T * T / 113065000 # ср элонгация луны
-		MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000 # ср солнечная аномалия
-		MM = 134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699 - T * T * T * T / 14712000 # ср лунная аномалия
-		EM = 1 - 0.002516 * T - 0.0000074 * T * T # поправка на изменяющийся эксцентриситет
+		LM = 218.3164477 + 481267.88123421 * T - 0.0015786 * T * T + T * T * T / 538841 - T * T * T * T / 65194000  # ср долгота луны
+		FM = 93.272095 + 483202.0175233 * T - 0.0036539 * T * T - T * T * T / 3526000 + T * T * T * T / 863310000  # ср аргумент широты луны
+		DM = 297.8501921 + 445267.114034 * T - 0.0018819 * T * T + T * T * T / 545868 - T * T * T * T / 113065000  # ср элонгация луны
+		MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000  # ср солнечная аномалия
+		MM = 134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699 - T * T * T * T / 14712000  # ср лунная аномалия
+		EM = 1 - 0.002516 * T - 0.0000074 * T * T  # поправка на изменяющийся эксцентриситет
 
 		EL = 6.289 * math.sin(MM * DEG2RAD)\
 			+ 1.274 * math.sin((2 * DM - MM) * DEG2RAD)\
@@ -1888,24 +1890,24 @@ class MSNWeather2(Poll, Converter, object):
 			- 0.114 * math.sin(DM * DEG2RAD)
 		pha1 = (1 + math.cos(IM * DEG2RAD)) / 2
 
-		MLat = math.fmod(EB, 360) # широта
-		MLong = math.fmod(LM + EL, 360) # долгота
+		MLat = math.fmod(EB, 360)  # широта
+		MLong = math.fmod(LM + EL, 360)  # долгота
 
-		Mdist = int(385000.56 + ER * 1000) # расстояние до луны км
-		RA = math.atan2((math.sin(MLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(MLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(MLong * DEG2RAD)) * RAD2DEG # прямое восхождение
+		Mdist = int(385000.56 + ER * 1000)  # расстояние до луны км
+		RA = math.atan2((math.sin(MLong * DEG2RAD) * math.cos(EPS * DEG2RAD) - math.tan(MLat * DEG2RAD) * math.sin(EPS * DEG2RAD)), math.cos(MLong * DEG2RAD)) * RAD2DEG  # прямое восхождение
 		if RA < 0:
 			RA = RA + 2 * PI
-		DEC = math.asin(math.sin(MLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(MLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(MLong * DEG2RAD)) * RAD2DEG # склонение
+		DEC = math.asin(math.sin(MLat * DEG2RAD) * math.cos(EPS * DEG2RAD) + math.cos(MLat * DEG2RAD) * math.sin(EPS * DEG2RAD) * math.sin(MLong * DEG2RAD)) * RAD2DEG  # склонение
 		TH = ST - RA
-		Z  = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG # косинус зенитного угла
-		H = 90 - Z # угол места
-		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180 # азимут + 180
+		Z = math.acos(math.sin(lat * DEG2RAD) * math.sin(DEC * DEG2RAD) + math.cos(lat * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(TH * DEG2RAD)) * RAD2DEG  # косинус зенитного угла
+		H = 90 - Z  # угол места
+		AZ = math.atan2(math.sin(TH * DEG2RAD) * math.cos(DEC * DEG2RAD) * math.cos(lat * DEG2RAD), math.sin(H * DEG2RAD) * math.sin(lat * DEG2RAD) - math.sin(DEC * DEG2RAD)) * RAD2DEG + 180  # азимут + 180
 		MA = round(AZ, 1)
 #
 		T = (JD + 0.5 / 24 - 2451545) / 36525
-		DM = 297.8501921 + 445267.114034 * T - 0.0018819 * T * T + T * T * T / 545868 - T * T * T * T / 113065000 # ср элонгация луны
-		MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000 # ср солнечная аномалия
-		MM = 134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699 - T * T * T * T / 14712000 # ср лунная аномалия
+		DM = 297.8501921 + 445267.114034 * T - 0.0018819 * T * T + T * T * T / 545868 - T * T * T * T / 113065000  # ср элонгация луны
+		MS = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T + T * T * T / 24490000  # ср солнечная аномалия
+		MM = 134.9633964 + 477198.8675055 * T + 0.0087414 * T * T + T * T * T / 69699 - T * T * T * T / 14712000  # ср лунная аномалия
 		IM = 180 - DM\
 			- 6.289 * math.sin(MM * DEG2RAD)\
 			+ 2.100 * math.sin(MS * DEG2RAD)\
