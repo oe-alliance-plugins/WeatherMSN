@@ -1,7 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WeatherMSN\n"
-"POT-Creation-Date: 2020-02-13 18:34+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-19 16:48+0200\n"
 "PO-Revision-Date: 2020-02-29 11:43+0100\n"
 "Last-Translator: maggy <mike-andesson@web.de>\n"
 "Language-Team: <Maggy>\n"
@@ -11,320 +12,475 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: WeatherMSN\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#, python-format
-msgid "%s m/s"
-msgstr "%s m/s"
-
-#, python-format
-msgid "%.01f m/s"
-msgstr "%.01f m/s"
-
+#: ../components/MSNWeather2.py:566 ../components/MSNWeather2.py:568
+#: ../components/MSNWeather2.py:570 ../plugin.py:741 ../plugin.py:743
+#: ../plugin.py:745
 #, python-format
 msgid "%.01f ft/s"
 msgstr "%.01f ft/s"
 
-#, python-format
-msgid "%.01f mp/h"
-msgstr "%.01f mp/h"
-
-#, python-format
-msgid "%s mp/h"
-msgstr "%s mp/h"
-
-#, python-format
-msgid "%.01f knots"
-msgstr "%.01f knoten"
-
+#: ../components/MSNWeather2.py:587 ../components/MSNWeather2.py:591
+#: ../plugin.py:762 ../plugin.py:766
 #, python-format
 msgid "%.01f km/h"
 msgstr "%.01f km/h"
 
+#: ../components/MSNWeather2.py:580 ../components/MSNWeather2.py:582
+#: ../components/MSNWeather2.py:584 ../plugin.py:755 ../plugin.py:757
+#: ../plugin.py:759
 #, python-format
-msgid "%s km/h"
-msgstr "%s km/h"
+msgid "%.01f knots"
+msgstr "%.01f knoten"
 
-msgid "New moon"
-msgstr "Neumond"
-
-msgid "Waxing cresent"
-msgstr "Zunehmender Halbmond"
-
-msgid "Waning crescent"
-msgstr "Wankender Halbmond"
-
-msgid "First quarter"
-msgstr "Erstes Viertel"
-
-msgid "Last quarter"
-msgstr "Letztes Viertel"
-
-msgid "Waxing gibbous"
-msgstr "Zunehmender Mond"
-
-msgid "Waning gibbous"
-msgstr "Abnehmender Gibbous"
-
-msgid "Full moon"
-msgstr "Vollmond"
-
+#: ../components/MSNWeather2.py:561 ../components/MSNWeather2.py:563
+#: ../plugin.py:736 ../plugin.py:738
 #, python-format
-msgid "%s km"
-msgstr "%s km"
-
-msgid "no"
-msgstr "Nein"
-
-msgid "yes"
-msgstr "Ja"
-
-msgid "m/s"
-msgstr "m/s"
-
-msgid "ft/s"
-msgstr "ft/s"
-
-msgid "km/h"
-msgstr "km/h"
-
-msgid "mp/h"
-msgstr "mp/h"
-
-msgid "knots"
-msgstr "Knoten"
-
-msgid "Celsius"
-msgstr "Celsius"
-
-msgid "Fahrenheit"
-msgstr "Fahrenheit"
-
-msgid "Weather MSN"
-msgstr "Weather MSN"
-
-msgid "Julian day:"
-msgstr "Julianischer Tag:"
-
-msgid "Sun rise:"
-msgstr "Sonnenaufgang:"
-
-msgid "Sun set:"
-msgstr "Sonneuntergang:"
-
-msgid "Solstice:"
-msgstr "Sonnenwende:"
-
-msgid "Mercury rise:"
-msgstr "Merkuraufgang:"
-
-msgid "Mercury set:"
-msgstr "Merkuruntergang:"
-
-msgid "Mercury culmination:"
-msgstr "Merkur Kulmination:"
-
-msgid "Mercury azimuth:"
-msgstr "Merkur Azimut:"
-
-msgid "Venus rise:"
-msgstr "Venusaufgang:"
-
-msgid "Venus set:"
-msgstr "Venusuntergang:"
-
-msgid "Venus culmination:"
-msgstr "Venus Kulmination:"
-
-msgid "Venus azimuth:"
-msgstr "Venus Azimut:"
-
-msgid "Mars rise:"
-msgstr "Marsaufgang:"
-
-msgid "Mars set:"
-msgstr "Marsuntergang:"
-
-msgid "Mars culmination:"
-msgstr "Mars Kulmination:"
-
-msgid "Mars azimuth:"
-msgstr "Mars Azimut:"
-
-msgid "Jupiter rise:"
-msgstr "Jupiteraufgang:"
-
-msgid "Jupiter set:"
-msgstr "Jupiteruntergang:"
-
-msgid "Jupiter culmination:"
-msgstr "Jupiter Kulmination:"
-
-msgid "Jupiter azimuth:"
-msgstr "Jupiter Azimut:"
-
-msgid "Saturn rise:"
-msgstr "Saturnaufgang:"
-
-msgid "Saturn set:"
-msgstr "Saturnuntergang:"
-
-msgid "Saturn culmination:"
-msgstr "Saturn Kulmination:"
-
-msgid "Saturn azimuth:"
-msgstr "Saturn Azimut:"
-
-msgid "Uranus rise:"
-msgstr "Uranusaufgang:"
-
-msgid "Uranus set:"
-msgstr "Uranusuntergang:"
-
-msgid "Uranus culmination:"
-msgstr "Uranus Kulmination:"
-
-msgid "Uranus azimuth:"
-msgstr "Uranus Azimut:"
-
-msgid "Neptune rise:"
-msgstr "Neptunaufgang:"
-
-msgid "Neptune set:"
-msgstr "Neptununtergang:"
-
-msgid "Neptune culmination:"
-msgstr "Neptun Kulmination:"
-
-msgid "Neptune azimuth:"
-msgstr "Neptun Azimut:"
-
-msgid "Moon distance:"
-msgstr "Monddistanz:"
-
-msgid "Moon culmination:"
-msgstr "Mond Kulmination:"
-
-msgid "Moon azimutht:"
-msgstr "Mond Azimut:"
-
-msgid "Moon rise:"
-msgstr "Mondaufgang:"
-
-msgid "Moon set:"
-msgstr "Monduntergang:"
-
-msgid "Moon light:"
-msgstr "Mondlicht:"
-
-msgid "Rise:"
-msgstr "Aufgang:"
-
-msgid "Set:"
-msgstr "Untergang:"
-
-msgid "Culmination:"
-msgstr "Kulmination:"
-
-msgid "Azimuth:"
-msgstr "Azimut:"
-
-msgid "Sun:"
-msgstr "Sonne:"
-
-msgid "Mercury:"
-msgstr "Merkur:"
-
-msgid "Venus:"
-msgstr "Venus:"
-
-msgid "Mars:"
-msgstr "Mars:"
-
-msgid "Jupiter:"
-msgstr "Jupiter:"
-
-msgid "Saturn:"
-msgstr "Saturn:"
-
-msgid "Uranus:"
-msgstr "Uranus:"
-
-msgid "Neptune:"
-msgstr "Neptun:"
-
-msgid "Moon:"
-msgstr "Mond:"
-
-msgid "Location:"
-msgstr "Standort:"
-
-msgid "Timezone:"
-msgstr "Zeitzone:"
-
-msgid "Latitude:"
-msgstr "Breitengrad:"
-
-msgid "Longitude:"
-msgstr "Längengrad:"
-
-msgid "Temperature:"
-msgstr "Temperatur:"
-
-msgid "Feels like:"
-msgstr "Gefühlt:"
-
-msgid "Humidity:"
-msgstr "Luftfeuchtigkeit:"
-
-msgid "Chance precip:"
-msgstr "Niederschlagswahrscheinlichkeit:"
-
-msgid "Natural events:"
-msgstr "Naturereignisse:"
-
-msgid "Wind:"
-msgstr "Wind:"
-
-msgid "Observation point:"
-msgstr "Beobachtungspunkt:"
-
-msgid "Date:"
-msgstr "Datum:"
-
-msgid "Day week:"
-msgstr "Wochentag:"
-
+msgid "%.01f m/s"
+msgstr "%.01f m/s"
+
+#: ../components/MSNWeather2.py:573 ../components/MSNWeather2.py:575
+#: ../plugin.py:748 ../plugin.py:750
+#, python-format
+msgid "%.01f mp/h"
+msgstr "%.01f mp/h"
+
+#: ../plugin.py:2236 ../plugin.py:2246 ../plugin.py:2251 ../plugin.py:2256
+#: ../plugin.py:2261 ../plugin.py:2266 ../plugin.py:2281 ../plugin.py:2308
+#: ../plugin.py:2318 ../plugin.py:2323 ../plugin.py:2340 ../plugin.py:2350
+#: ../plugin.py:2355 ../plugin.py:2372 ../plugin.py:2382 ../plugin.py:2387
+#: ../plugin.py:2404 ../plugin.py:2414 ../plugin.py:2419 ../plugin.py:2436
+#: ../plugin.py:2446 ../plugin.py:2451
 #, python-format
 msgid "%s"
 msgstr "%s"
 
-msgid "n/a"
-msgstr "n/a"
-
-#, python-format
-msgid "%s h"
-msgstr "%s h"
-
-#, python-format
-msgid "%s%s%s"
-msgstr "%s%s%s"
-
+#: ../plugin.py:2286 ../plugin.py:2313 ../plugin.py:2345 ../plugin.py:2377
+#: ../plugin.py:2409 ../plugin.py:2441
 #, python-format
 msgid "%s %s"
 msgstr "%s %s"
 
+#: ../plugin.py:2291
 #, python-format
 msgid "%s %s %s"
 msgstr "%s %s %s"
 
+#: ../components/MSNWeather2.py:535 ../plugin.py:2241
+#, python-format
+msgid "%s h"
+msgstr "%s h"
+
+#: ../components/MSNWeather2.py:2078 ../plugin.py:2220
+#, python-format
+msgid "%s km"
+msgstr "%s km"
+
+#: ../components/MSNWeather2.py:589 ../plugin.py:764
+#, python-format
+msgid "%s km/h"
+msgstr "%s km/h"
+
+#: ../components/MSNWeather2.py:559 ../plugin.py:734
+#, python-format
+msgid "%s m/s"
+msgstr "%s m/s"
+
+#: ../components/MSNWeather2.py:577 ../plugin.py:752
+#, python-format
+msgid "%s mp/h"
+msgstr "%s mp/h"
+
+#: ../plugin.py:2271 ../plugin.py:2276
+#, python-format
+msgid "%s%s%s"
+msgstr "%s%s%s"
+
+#: ../plugin.py:2303 ../plugin.py:2335 ../plugin.py:2367 ../plugin.py:2399
+#: ../plugin.py:2431
 #, python-format
 msgid "%s%s%s / %s%s%s"
 msgstr "%s%s%s / %s%s%s"
 
+#: ../components/MSNWeather2.py:533
+#, fuzzy, python-format
+msgid "+%s h"
+msgstr "%s h"
+
+#: ../plugin.py:562
+msgid "Azimuth:"
+msgstr "Azimut:"
+
+#: ../plugin.py:92
+msgid "Celsius"
+msgstr "Celsius"
+
+#: ../plugin.py:621
+msgid "Chance precip:"
+msgstr "Niederschlagswahrscheinlichkeit:"
+
+#: ../plugin.py:2733
+msgid "Close"
+msgstr "Schließen"
+
+#: ../plugin.py:2713
+msgid "Config Weather MSN"
+msgstr "Weather MSN Config"
+
+#: ../plugin.py:2787
+msgid "Configuration is saved"
+msgstr "Konfiguration wird gespeichert"
+
+#: ../plugin.py:2751
+msgid "Create converter in system:"
+msgstr "Konverter im System anlegen:"
+
+#: ../plugin.py:561
+msgid "Culmination:"
+msgstr "Kulmination:"
+
+#: ../plugin.py:625
+msgid "Date:"
+msgstr "Datum:"
+
+#: ../plugin.py:626
+msgid "Day week:"
+msgstr "Wochentag:"
+
+#: ../plugin.py:2785
+msgid "Do you want to restart the GUI now ?"
+msgstr "Möchten Sie die GUI jetzt neu starten?"
+
+#: ../plugin.py:2739
+msgid "Enter text to search city"
+msgstr "Text button klicken, um die Stadt zu suchen"
+
+#: ../plugin.py:93
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+
+#: ../plugin.py:619
+msgid "Feels like:"
+msgstr "Gefühlt:"
+
+#: ../components/MSNWeather2.py:1981 ../components/MSNWeather2.py:1987
+#: ../plugin.py:2123 ../plugin.py:2129
+msgid "First quarter"
+msgstr "Erstes Viertel"
+
+#: ../components/MSNWeather2.py:2041 ../components/MSNWeather2.py:2044
+#: ../plugin.py:2183 ../plugin.py:2186
+msgid "Full moon"
+msgstr "Vollmond"
+
+#: ../plugin.py:620
+msgid "Humidity:"
+msgstr "Luftfeuchtigkeit:"
+
+#: ../plugin.py:520
+msgid "Julian day:"
+msgstr "Julianischer Tag:"
+
+#: ../plugin.py:539
+msgid "Jupiter azimuth:"
+msgstr "Jupiter Azimut:"
+
+#: ../plugin.py:538
+msgid "Jupiter culmination:"
+msgstr "Jupiter Kulmination:"
+
+#: ../plugin.py:536
+msgid "Jupiter rise:"
+msgstr "Jupiteraufgang:"
+
+#: ../plugin.py:537
+msgid "Jupiter set:"
+msgstr "Jupiteruntergang:"
+
+#: ../plugin.py:567
+msgid "Jupiter:"
+msgstr "Jupiter:"
+
+#: ../components/MSNWeather2.py:1984 ../components/MSNWeather2.py:1990
+#: ../plugin.py:2126 ../plugin.py:2132
+msgid "Last quarter"
+msgstr "Letztes Viertel"
+
+#: ../plugin.py:616
+msgid "Latitude:"
+msgstr "Breitengrad:"
+
+#: ../plugin.py:614 ../plugin.py:2748
+msgid "Location:"
+msgstr "Standort:"
+
+#: ../plugin.py:617
+msgid "Longitude:"
+msgstr "Längengrad:"
+
+#: ../plugin.py:535
+msgid "Mars azimuth:"
+msgstr "Mars Azimut:"
+
+#: ../plugin.py:534
+msgid "Mars culmination:"
+msgstr "Mars Kulmination:"
+
+#: ../plugin.py:532
+msgid "Mars rise:"
+msgstr "Marsaufgang:"
+
+#: ../plugin.py:533
+msgid "Mars set:"
+msgstr "Marsuntergang:"
+
+#: ../plugin.py:566
+msgid "Mars:"
+msgstr "Mars:"
+
+#: ../plugin.py:527
+msgid "Mercury azimuth:"
+msgstr "Merkur Azimut:"
+
+#: ../plugin.py:526
+msgid "Mercury culmination:"
+msgstr "Merkur Kulmination:"
+
+#: ../plugin.py:524
+msgid "Mercury rise:"
+msgstr "Merkuraufgang:"
+
+#: ../plugin.py:525
+msgid "Mercury set:"
+msgstr "Merkuruntergang:"
+
+#: ../plugin.py:564
+msgid "Mercury:"
+msgstr "Merkur:"
+
+#: ../plugin.py:554
+#, fuzzy
+msgid "Moon azimuth:"
+msgstr "Mond Azimut:"
+
+#: ../plugin.py:553
+msgid "Moon culmination:"
+msgstr "Mond Kulmination:"
+
+#: ../plugin.py:552
+msgid "Moon distance:"
+msgstr "Monddistanz:"
+
+#: ../plugin.py:557
+msgid "Moon light:"
+msgstr "Mondlicht:"
+
+#: ../plugin.py:555
+msgid "Moon rise:"
+msgstr "Mondaufgang:"
+
+#: ../plugin.py:556
+msgid "Moon set:"
+msgstr "Monduntergang:"
+
+#: ../plugin.py:571
+msgid "Moon:"
+msgstr "Mond:"
+
+#: ../plugin.py:623
+msgid "Natural events:"
+msgstr "Naturereignisse:"
+
+#: ../plugin.py:551
+msgid "Neptune azimuth:"
+msgstr "Neptun Azimut:"
+
+#: ../plugin.py:550
+msgid "Neptune culmination:"
+msgstr "Neptun Kulmination:"
+
+#: ../plugin.py:548
+msgid "Neptune rise:"
+msgstr "Neptunaufgang:"
+
+#: ../plugin.py:549
+msgid "Neptune set:"
+msgstr "Neptununtergang:"
+
+#: ../plugin.py:570
+msgid "Neptune:"
+msgstr "Neptun:"
+
+#: ../components/MSNWeather2.py:1927 ../components/MSNWeather2.py:1930
+#: ../plugin.py:2069 ../plugin.py:2072
+msgid "New moon"
+msgstr "Neumond"
+
+#: ../plugin.py:624
+msgid "Observation point:"
+msgstr "Beobachtungspunkt:"
+
+#: ../plugin.py:559
+msgid "Rise:"
+msgstr "Aufgang:"
+
+#: ../plugin.py:543
+msgid "Saturn azimuth:"
+msgstr "Saturn Azimut:"
+
+#: ../plugin.py:542
+msgid "Saturn culmination:"
+msgstr "Saturn Kulmination:"
+
+#: ../plugin.py:540
+msgid "Saturn rise:"
+msgstr "Saturnaufgang:"
+
+#: ../plugin.py:541
+msgid "Saturn set:"
+msgstr "Saturnuntergang:"
+
+#: ../plugin.py:568
+msgid "Saturn:"
+msgstr "Saturn:"
+
+#: ../plugin.py:2734
+msgid "Save"
+msgstr "Speichern"
+
+#: ../plugin.py:2750
+msgid "Scale of temperature:"
+msgstr "Temperaturskala:"
+
+#: ../plugin.py:2749
+msgid "Scale of wind speed:"
+msgstr "Windgeschwindigkeitskala:"
+
+#: ../plugin.py:2735
+msgid "Search Location"
+msgstr "Standort Suchen"
+
+#: ../plugin.py:2812
+msgid "Search Location Weather MSN"
+msgstr "Standort Suchen Weather MSN"
+
+#: ../plugin.py:560
+msgid "Set:"
+msgstr "Untergang:"
+
+#: ../plugin.py:2747
+msgid "Show Weather MSN in menu information:"
+msgstr "Wetter MSN in Menüinformationen anzeigen:"
+
+#: ../plugin.py:523
+msgid "Solstice:"
+msgstr "Sonnenwende:"
+
+#: ../plugin.py:521
+msgid "Sun rise:"
+msgstr "Sonnenaufgang:"
+
+#: ../plugin.py:522
+msgid "Sun set:"
+msgstr "Sonneuntergang:"
+
+#: ../plugin.py:563
+msgid "Sun:"
+msgstr "Sonne:"
+
+#: ../plugin.py:618
+msgid "Temperature:"
+msgstr "Temperatur:"
+
+#: ../plugin.py:615
+msgid "Timezone:"
+msgstr "Zeitzone:"
+
+#: ../plugin.py:547
+msgid "Uranus azimuth:"
+msgstr "Uranus Azimut:"
+
+#: ../plugin.py:546
+msgid "Uranus culmination:"
+msgstr "Uranus Kulmination:"
+
+#: ../plugin.py:544
+msgid "Uranus rise:"
+msgstr "Uranusaufgang:"
+
+#: ../plugin.py:545
+msgid "Uranus set:"
+msgstr "Uranusuntergang:"
+
+#: ../plugin.py:569
+msgid "Uranus:"
+msgstr "Uranus:"
+
+#: ../plugin.py:531
+msgid "Venus azimuth:"
+msgstr "Venus Azimut:"
+
+#: ../plugin.py:530
+msgid "Venus culmination:"
+msgstr "Venus Kulmination:"
+
+#: ../plugin.py:528
+msgid "Venus rise:"
+msgstr "Venusaufgang:"
+
+#: ../plugin.py:529
+msgid "Venus set:"
+msgstr "Venusuntergang:"
+
+#: ../plugin.py:565
+msgid "Venus:"
+msgstr "Venus:"
+
+#: ../components/MSNWeather2.py:1936 ../components/MSNWeather2.py:1942
+#: ../components/MSNWeather2.py:1948 ../components/MSNWeather2.py:1954
+#: ../components/MSNWeather2.py:1960 ../components/MSNWeather2.py:1966
+#: ../components/MSNWeather2.py:1972 ../components/MSNWeather2.py:1978
+#: ../plugin.py:2078 ../plugin.py:2084 ../plugin.py:2090 ../plugin.py:2096
+#: ../plugin.py:2102 ../plugin.py:2108 ../plugin.py:2114 ../plugin.py:2120
+msgid "Waning crescent"
+msgstr "Wankender Halbmond"
+
+#: ../components/MSNWeather2.py:1996 ../components/MSNWeather2.py:2002
+#: ../components/MSNWeather2.py:2008 ../components/MSNWeather2.py:2014
+#: ../components/MSNWeather2.py:2020 ../components/MSNWeather2.py:2026
+#: ../components/MSNWeather2.py:2032 ../components/MSNWeather2.py:2038
+#: ../plugin.py:2138 ../plugin.py:2144 ../plugin.py:2150 ../plugin.py:2156
+#: ../plugin.py:2162 ../plugin.py:2168 ../plugin.py:2174 ../plugin.py:2180
+msgid "Waning gibbous"
+msgstr "Abnehmender Gibbous"
+
+#: ../components/MSNWeather2.py:1933 ../components/MSNWeather2.py:1939
+#: ../components/MSNWeather2.py:1945 ../components/MSNWeather2.py:1951
+#: ../components/MSNWeather2.py:1957 ../components/MSNWeather2.py:1963
+#: ../components/MSNWeather2.py:1969 ../components/MSNWeather2.py:1975
+#: ../plugin.py:2075 ../plugin.py:2081 ../plugin.py:2087 ../plugin.py:2093
+#: ../plugin.py:2099 ../plugin.py:2105 ../plugin.py:2111 ../plugin.py:2117
+msgid "Waxing cresent"
+msgstr "Zunehmender Halbmond"
+
+#: ../components/MSNWeather2.py:1993 ../components/MSNWeather2.py:1999
+#: ../components/MSNWeather2.py:2005 ../components/MSNWeather2.py:2011
+#: ../components/MSNWeather2.py:2017 ../components/MSNWeather2.py:2023
+#: ../components/MSNWeather2.py:2029 ../components/MSNWeather2.py:2035
+#: ../plugin.py:2135 ../plugin.py:2141 ../plugin.py:2147 ../plugin.py:2153
+#: ../plugin.py:2159 ../plugin.py:2165 ../plugin.py:2171 ../plugin.py:2177
+msgid "Waxing gibbous"
+msgstr "Zunehmender Mond"
+
+#: ../plugin.py:518 ../plugin.py:2874 ../plugin.py:2888 ../plugin.py:2891
+#: ../plugin.py:2900
+msgid "Weather MSN"
+msgstr "Weather MSN"
+
+#: ../plugin.py:2668
 msgid ""
 "Weather MSN \n"
 "Developer: Sirius0103 \n"
@@ -347,41 +503,60 @@ msgstr ""
 "Z395874509364 \n"
 "E284580190260"
 
-msgid "Config Weather MSN"
-msgstr "Weather MSN Config"
-
-msgid "Close"
-msgstr "Schließen"
-
-msgid "Save"
-msgstr "Speichern"
-
-msgid "Search Location"
-msgstr "Standort Suchen"
-
-msgid "Enter text to search city"
-msgstr "Text button klicken, um die Stadt zu suchen"
-
-msgid "Show Weather MSN in menu information:"
-msgstr "Wetter MSN in Menüinformationen anzeigen:"
-
-msgid "Scale of wind speed:"
-msgstr "Windgeschwindigkeitskala:"
-
-msgid "Scale of temperature:"
-msgstr "Temperaturskala:"
-
-msgid "Create converter in system:"
-msgstr "Konverter im System anlegen:"
-
-msgid "Do you want to restart the GUI now ?"
-msgstr "Möchten Sie die GUI jetzt neu starten?"
-
-msgid "Configuration is saved"
-msgstr "Konfiguration wird gespeichert"
-
-msgid "Search Location Weather MSN"
-msgstr "Standort Suchen Weather MSN"
-
+#: ../plugin.py:2892 ../plugin.py:2901
 msgid "Weather forecast, astronomical calculations"
 msgstr "Wettervorhersage, astronomische Berechnungen"
+
+#: ../plugin.py:622
+msgid "Wind:"
+msgstr "Wind:"
+
+#: ../plugin.py:87
+msgid "ft/s"
+msgstr "ft/s"
+
+#: ../plugin.py:88
+msgid "km/h"
+msgstr "km/h"
+
+#: ../plugin.py:90
+msgid "knots"
+msgstr "Knoten"
+
+#: ../plugin.py:86
+msgid "m/s"
+msgstr "m/s"
+
+#: ../plugin.py:89
+msgid "mp/h"
+msgstr "mp/h"
+
+#: ../plugin.py:2238 ../plugin.py:2243 ../plugin.py:2248 ../plugin.py:2253
+#: ../plugin.py:2258 ../plugin.py:2263 ../plugin.py:2268 ../plugin.py:2273
+#: ../plugin.py:2278 ../plugin.py:2283 ../plugin.py:2288 ../plugin.py:2293
+#: ../plugin.py:2305 ../plugin.py:2310 ../plugin.py:2315 ../plugin.py:2320
+#: ../plugin.py:2325 ../plugin.py:2337 ../plugin.py:2342 ../plugin.py:2347
+#: ../plugin.py:2352 ../plugin.py:2357 ../plugin.py:2369 ../plugin.py:2374
+#: ../plugin.py:2379 ../plugin.py:2384 ../plugin.py:2389 ../plugin.py:2401
+#: ../plugin.py:2406 ../plugin.py:2411 ../plugin.py:2416 ../plugin.py:2421
+#: ../plugin.py:2433 ../plugin.py:2438 ../plugin.py:2443 ../plugin.py:2448
+#: ../plugin.py:2453 ../plugin.py:2465 ../plugin.py:2470 ../plugin.py:2475
+#: ../plugin.py:2480 ../plugin.py:2485 ../plugin.py:2490 ../plugin.py:2495
+#: ../plugin.py:2500 ../plugin.py:2505 ../plugin.py:2510 ../plugin.py:2515
+#: ../plugin.py:2520 ../plugin.py:2525 ../plugin.py:2530 ../plugin.py:2535
+#: ../plugin.py:2540 ../plugin.py:2545 ../plugin.py:2550 ../plugin.py:2555
+#: ../plugin.py:2560 ../plugin.py:2565 ../plugin.py:2570 ../plugin.py:2575
+#: ../plugin.py:2580 ../plugin.py:2585 ../plugin.py:2590 ../plugin.py:2595
+#: ../plugin.py:2600 ../plugin.py:2605 ../plugin.py:2610 ../plugin.py:2615
+#: ../plugin.py:2620 ../plugin.py:2625 ../plugin.py:2630 ../plugin.py:2635
+#: ../plugin.py:2640 ../plugin.py:2645 ../plugin.py:2650 ../plugin.py:2655
+msgid "n/a"
+msgstr "n/a"
+
+#: ../plugin.py:79 ../plugin.py:82
+msgid "no"
+msgstr "Nein"
+
+#: ../plugin.py:80 ../plugin.py:83
+msgid "yes"
+msgstr "Ja"

@@ -57,15 +57,18 @@ from six.moves.urllib.parse import quote
 from six.moves.urllib.request import urlopen, Request
 
 
+PluginLanguageDomain = "WeatherMSN"
+
+
 lang = language.getLanguage()
 environ["LANGUAGE"] = lang[:2]
 gettext.bindtextdomain("enigma2", resolveFilename(SCOPE_LANGUAGE))
 gettext.textdomain("enigma2")
-gettext.bindtextdomain("WeatherMSN", "%s%s" % (resolveFilename(SCOPE_PLUGINS), "Extensions/WeatherMSN/locale"))
+gettext.bindtextdomain(PluginLanguageDomain, "%s%s" % (resolveFilename(SCOPE_PLUGINS), "Extensions/WeatherMSN/locale"))
 
 
 def _(txt):
-	t = gettext.dgettext("WeatherMSN", txt)
+	t = gettext.dgettext(PluginLanguageDomain, txt)
 	if t == txt:
 		t = gettext.gettext(txt)
 	return t
