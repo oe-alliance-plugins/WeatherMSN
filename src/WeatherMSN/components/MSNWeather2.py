@@ -21,20 +21,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-import os
+from os.path import exists
+from os import stat
 import math
-import gettext
-import datetime
 import time
-from Tools.Directories import fileExists, pathExists
 from Components.Converter.Converter import Converter
 from Components.Element import cached
-from Components.config import config, configfile
+from Components.config import config
 from Components.Console import Console as iConsole
-from Components.Language import language
-from time import localtime, strftime
-from datetime import date
-from os import environ
+from time import strftime
 from Components.Converter.Poll import Poll
 import six
 
@@ -50,7 +45,7 @@ time_update = 30
 time_update_ms = 3000
 
 
-class MSNWeather2(Poll, Converter, object):
+class MSNWeather2(Poll, Converter):
 
 	VFD = 1
 	DATE = 2
@@ -515,15 +510,15 @@ class MSNWeather2(Poll, Converter, object):
 			'Precip4': '',
 			}
 #
-		if fileExists("/tmp/weathermsn2.xml"):
-			if int((time.time() - os.stat("/tmp/weathermsn2.xml").st_mtime) / 60) >= time_update:
+		if exists("/tmp/weathermsn2.xml"):
+			if int((time.time() - stat("/tmp/weathermsn2.xml").st_mtime) / 60) >= time_update:
 				self.get_xmlfile()
 		else:
 			self.get_xmlfile()
-		if not fileExists("/tmp/weathermsn2.xml"):
+		if not exists("/tmp/weathermsn2.xml"):
 			self.write_none()
 			return info
-		if fileExists("/tmp/weathermsn2.xml") and open("/tmp/weathermsn2.xml").read() == 'None':
+		if exists("/tmp/weathermsn2.xml") and open("/tmp/weathermsn2.xml").read() == 'None':
 			return info
 		for line in open("/tmp/weathermsn2.xml"):
 			try:
@@ -552,7 +547,7 @@ class MSNWeather2(Poll, Converter, object):
 					msnweather['Humidity'] = line.split('humidity')[1].split('"')[1] + ' %s' % six.ensure_str(six.unichr(37))
 					try:
 						msnweather['Wind'] = line.split('winddisplay')[1].split('"')[1].split(' ')[2]
-					except:
+					except Exception:
 						pass
 # m/s
 					if windtype == 'ms' and line.split('windspeed')[1].split('"')[1].split(' ')[1] == 'm/s':
@@ -703,7 +698,7 @@ class MSNWeather2(Poll, Converter, object):
 					msnweather['Shortday4'] = line.split('shortday')[6].split('"')[1]
 					msnweather['Skytext4'] = line.split('skytextday')[5].split('"')[1]
 					msnweather['Precip4'] = line.split('precip')[5].split('"')[1] + ' %s' % six.ensure_str(six.unichr(37))
-			except:
+			except Exception:
 				pass
 #
 		PI = 3.14159265359
@@ -713,7 +708,7 @@ class MSNWeather2(Poll, Converter, object):
 			long = float(longitude)
 			lat = float(latitude)
 			zone = float(timezone)
-		except:
+		except Exception:
 			long = lat = zone = 0
 		UT = hour + min / 60 + sec / 3600
 # Юлианская дата
@@ -791,9 +786,9 @@ class MSNWeather2(Poll, Converter, object):
 		MP3 = 358.47583 + 35999.04975 * T - 0.000150 * T * T - 0.0000033 * T * T * T
 		MP4 = 319.51913 + 19139.85475 * T + 0.000181 * T * T
 		MP5 = 225.32833 + 3034.69202 * T - 0.000722 * T * T
-		MP6 = 175.46622 + 1221.55147 * T - 0.000502 * T * T
-		MP7 = 72.64878 + 428.37911 * T + 0.000079 * T * T
-		MP8 = 37.73063 + 218.46134 * T - 0.000070 * T * T
+		# MP6 = 175.46622 + 1221.55147 * T - 0.000502 * T * T
+		# MP7 = 72.64878 + 428.37911 * T + 0.000079 * T * T
+		# MP8 = 37.73063 + 218.46134 * T - 0.000070 * T * T
 # Орбита меркурия
 		LP1 = 178.179078 + 149474.07078 * T + 0.0003011 * T * T  # ср долгота L
 		wP1 = 28.753753 + 0.3702806 * T + 0.0001208 * T * T  # аргумент перигелия w
@@ -802,9 +797,9 @@ class MSNWeather2(Poll, Converter, object):
 		EP1 = 0.20561421 + 0.00002046 * T - 0.000000030 * T * T  # эксцентриситет орбиты e
 
 		EL = 0.00204 * math.cos((5 * MP2 - 2 * MP1 + 12.220) * DEG2RAD)\
-			 + 0.00103 * math.cos((2 * MP2 - MP1 - 160.692) * DEG2RAD)\
-			 + 0.00091 * math.cos((2 * MP5 - MP1 - 37.003) * DEG2RAD)\
-			 + 0.00078 * math.cos((5 * MP2 - 3 * MP1 + 10.137) * DEG2RAD)
+			+ 0.00103 * math.cos((2 * MP2 - MP1 - 160.692) * DEG2RAD)\
+			+ 0.00091 * math.cos((2 * MP5 - MP1 - 37.003) * DEG2RAD)\
+			+ 0.00078 * math.cos((5 * MP2 - 3 * MP1 + 10.137) * DEG2RAD)
 
 		LP = LP1 + EL
 		M0 = math.fmod(174.795 + 4.092317 * (JDN - 2451545), 360)  # ср аномалия
@@ -1477,9 +1472,9 @@ class MSNWeather2(Poll, Converter, object):
 		MP3 = 358.47583 + 35999.04975 * T - 0.000150 * T * T - 0.0000033 * T * T * T
 		MP4 = 319.51913 + 19139.85475 * T + 0.000181 * T * T
 		MP5 = 225.32833 + 3034.69202 * T - 0.000722 * T * T
-		MP6 = 175.46622 + 1221.55147 * T - 0.000502 * T * T
-		MP7 = 72.64878 + 428.37911 * T + 0.000079 * T * T
-		MP8 = 37.73063 + 218.46134 * T - 0.000070 * T * T
+		# MP6 = 175.46622 + 1221.55147 * T - 0.000502 * T * T
+		# MP7 = 72.64878 + 428.37911 * T + 0.000079 * T * T
+		# MP8 = 37.73063 + 218.46134 * T - 0.000070 * T * T
 # Орбита меркурия
 		LP1 = 178.179078 + 149474.07078 * T + 0.0003011 * T * T  # ср долгота L
 		wP1 = 28.753753 + 0.3702806 * T + 0.0001208 * T * T  # аргумент перигелия w
@@ -1488,9 +1483,9 @@ class MSNWeather2(Poll, Converter, object):
 		EP1 = 0.20561421 + 0.00002046 * T - 0.000000030 * T * T  # эксцентриситет орбиты e
 
 		EL = 0.00204 * math.cos((5 * MP2 - 2 * MP1 + 12.220) * DEG2RAD)\
-			 + 0.00103 * math.cos((2 * MP2 - MP1 - 160.692) * DEG2RAD)\
-			 + 0.00091 * math.cos((2 * MP5 - MP1 - 37.003) * DEG2RAD)\
-			 + 0.00078 * math.cos((5 * MP2 - 3 * MP1 + 10.137) * DEG2RAD)
+			+ 0.00103 * math.cos((2 * MP2 - MP1 - 160.692) * DEG2RAD)\
+			+ 0.00091 * math.cos((2 * MP5 - MP1 - 37.003) * DEG2RAD)\
+			+ 0.00078 * math.cos((5 * MP2 - 3 * MP1 + 10.137) * DEG2RAD)
 
 		LP = LP1 + EL
 		M0 = math.fmod(174.795 + 4.092317 * (JDN - 2451545), 360)  # ср аномалия
@@ -2083,14 +2078,14 @@ class MSNWeather2(Poll, Converter, object):
 			msnweather['Moonphase'] = '%s' % phase
 			msnweather['Moonlight'] = '%s %s' % (light, six.ensure_str(six.unichr(37)))
 			msnweather['PiconMoon'] = '%s' % pic
-		except:
+		except Exception:
 			pass
 			msnweather['PiconMoon'] = '1'
 #
 		if self.type is self.VFD:
 			try:
 				weze = msnweather['Skytext'].split(' ')[1]
-			except:
+			except Exception:
 				weze = msnweather['Skytext']
 			info = msnweather['Temp'] + ' ' + weze
 		if self.type is self.DATE:

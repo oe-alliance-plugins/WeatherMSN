@@ -21,12 +21,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-from __future__ import absolute_import, division
-from __future__ import print_function
-import datetime
-import time
-import os
+from __future__ import division
 import math
+from time import time, strftime
+import os
 import gettext
 from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
@@ -34,34 +32,28 @@ from Screens.MessageBox import MessageBox
 from Screens.Standby import TryQuitMainloop
 from Screens.VirtualKeyBoard import VirtualKeyBoard
 from Components.ActionMap import ActionMap
-from Components.Label import Label
 from Components.Sources.StaticText import StaticText
 from Components.Language import language
 from Components.MenuList import MenuList
 from Components.ConfigList import ConfigListScreen
-from Components.config import getConfigListEntry, ConfigText, ConfigYesNo, ConfigSubsection, ConfigSelection, config, configfile, NoSave
+from Components.config import getConfigListEntry, ConfigText, ConfigSubsection, ConfigSelection, config, configfile
 from Components.Pixmap import Pixmap
-from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
 from xml.etree.cElementTree import fromstring as cet_fromstring
-from twisted.web.client import downloadPage
-from time import localtime, strftime
-from enigma import eTimer, ePoint
-from enigma import getDesktop
-from os import system, environ
-from datetime import date
+from twisted.internet.threads import deferToThread
+from enigma import ePoint, getDesktop
 
 import six
-from six.moves import urllib
-from six.moves.urllib.error import URLError, HTTPError
-from six.moves.urllib.parse import quote
-from six.moves.urllib.request import urlopen, Request
+from urllib.parse import quote
+from urllib.request import urlopen, Request
+
+import requests
 
 
 PluginLanguageDomain = "WeatherMSN"
 
 
 lang = language.getLanguage()
-environ["LANGUAGE"] = lang[:2]
 gettext.bindtextdomain("enigma2", resolveFilename(SCOPE_LANGUAGE))
 gettext.textdomain("enigma2")
 gettext.bindtextdomain(PluginLanguageDomain, "%s%s" % (resolveFilename(SCOPE_PLUGINS), "Extensions/WeatherMSN/locale"))
@@ -72,6 +64,28 @@ def _(txt):
 	if t == txt:
 		t = gettext.gettext(txt)
 	return t
+
+
+def ensure_binary(s):
+	if isinstance(s, str):
+		return s.encode("utf-8")
+	return s
+
+
+def getPage(url, params=None, data=None, headers=None):
+	return deferToThread(requests.post if data else requests.get, url, params=params, data=data, headers=headers, timeout=30.05)
+
+
+def savePage(response, filename):
+	response.raise_for_status()
+	try:
+		open(filename, "wb").write(response.content)
+	except Exception as e:
+		return e
+
+
+def downloadPage(url, filename, params=None, headers=None):
+	return getPage(url, params, headers).addCallback(savePage, filename)
 
 
 config.plugins.weathermsn = ConfigSubsection()
@@ -679,7 +693,7 @@ class WeatherMSN(Screen):
 
 	def get_xmlfile(self):
 		xmlfile = "http://weather.service.msn.com/data.aspx?weadegreetype=%s&culture=%s&weasearchstr=%s&src=outlook" % (self.degreetype, self.language, quote(self.city))
-		downloadPage(six.ensure_binary(xmlfile), "/tmp/weathermsn1.xml").addCallback(self.downloadFinished).addErrback(self.downloadFailed)
+		downloadPage(ensure_binary(xmlfile), "/tmp/weathermsn1.xml").addCallback(self.downloadFinished).addErrback(self.downloadFailed)
 
 	def downloadFinished(self, result):
 		print("[WeatherMSN] Download finished")
@@ -691,7 +705,7 @@ class WeatherMSN(Screen):
 		print("[WeatherMSN] Download failed!")
 
 	def get_weather_data(self):
-		if not os.path.exists("/tmp/weathermsn1.xml") or int((time.time() - os.stat("/tmp/weathermsn1.xml").st_mtime) / 60) >= self.time_update or self.notdata:
+		if not os.path.exists("/tmp/weathermsn1.xml") or int((time() - os.stat("/tmp/weathermsn1.xml").st_mtime) / 60) >= self.time_update or self.notdata:
 			self.get_xmlfile()
 		else:
 			self.parse_weather_data()
@@ -727,7 +741,7 @@ class WeatherMSN(Screen):
 					self.humidity['Humidity'] = line.split('humidity')[1].split('"')[1]
 					try:
 						self.wind['Wind'] = line.split('winddisplay')[1].split('"')[1].split(' ')[2]
-					except:
+					except Exception:
 						pass
 # m/s
 					if self.windtype == 'ms' and line.split('windspeed')[1].split('"')[1].split(' ')[1] == 'm/s':
@@ -839,7 +853,7 @@ class WeatherMSN(Screen):
 					self.day4['Day4'] = line.split(' day')[6].split('"')[1]
 					self.skytext4['Skytext4'] = line.split('skytextday')[5].split('"')[1]
 					self.precip4['Precip4'] = line.split('precip')[5].split('"')[1]
-			except:
+			except Exception:
 				pass
 # Астро
 		PI = 3.14159265359
@@ -855,7 +869,7 @@ class WeatherMSN(Screen):
 			long = float(longitude)
 			lat = float(latitude)
 			zone = float(timezone)
-		except:
+		except Exception:
 			long = lat = zone = 0
 		UT = hour + min / 60 + sec / 3600
 # Юлианская дата
@@ -933,9 +947,9 @@ class WeatherMSN(Screen):
 		MP3 = 358.47583 + 35999.04975 * T - 0.000150 * T * T - 0.0000033 * T * T * T
 		MP4 = 319.51913 + 19139.85475 * T + 0.000181 * T * T
 		MP5 = 225.32833 + 3034.69202 * T - 0.000722 * T * T
-		MP6 = 175.46622 + 1221.55147 * T - 0.000502 * T * T
-		MP7 = 72.64878 + 428.37911 * T + 0.000079 * T * T
-		MP8 = 37.73063 + 218.46134 * T - 0.000070 * T * T
+		# MP6 = 175.46622 + 1221.55147 * T - 0.000502 * T * T
+		# MP7 = 72.64878 + 428.37911 * T + 0.000079 * T * T
+		# MP8 = 37.73063 + 218.46134 * T - 0.000070 * T * T
 # Орбита меркурия
 		LP1 = 178.179078 + 149474.07078 * T + 0.0003011 * T * T  # ср долгота L
 		wP1 = 28.753753 + 0.3702806 * T + 0.0001208 * T * T  # аргумент перигелия w
@@ -944,9 +958,9 @@ class WeatherMSN(Screen):
 		EP1 = 0.20561421 + 0.00002046 * T - 0.000000030 * T * T  # эксцентриситет орбиты e
 
 		EL = 0.00204 * math.cos((5 * MP2 - 2 * MP1 + 12.220) * DEG2RAD)\
-			 + 0.00103 * math.cos((2 * MP2 - MP1 - 160.692) * DEG2RAD)\
-			 + 0.00091 * math.cos((2 * MP5 - MP1 - 37.003) * DEG2RAD)\
-			 + 0.00078 * math.cos((5 * MP2 - 3 * MP1 + 10.137) * DEG2RAD)
+			+ 0.00103 * math.cos((2 * MP2 - MP1 - 160.692) * DEG2RAD)\
+			+ 0.00091 * math.cos((2 * MP5 - MP1 - 37.003) * DEG2RAD)\
+			+ 0.00078 * math.cos((5 * MP2 - 3 * MP1 + 10.137) * DEG2RAD)
 
 		LP = LP1 + EL
 		M0 = math.fmod(174.795 + 4.092317 * (JDN - 2451545), 360)  # ср аномалия
@@ -1619,9 +1633,9 @@ class WeatherMSN(Screen):
 		MP3 = 358.47583 + 35999.04975 * T - 0.000150 * T * T - 0.0000033 * T * T * T
 		MP4 = 319.51913 + 19139.85475 * T + 0.000181 * T * T
 		MP5 = 225.32833 + 3034.69202 * T - 0.000722 * T * T
-		MP6 = 175.46622 + 1221.55147 * T - 0.000502 * T * T
-		MP7 = 72.64878 + 428.37911 * T + 0.000079 * T * T
-		MP8 = 37.73063 + 218.46134 * T - 0.000070 * T * T
+		# MP6 = 175.46622 + 1221.55147 * T - 0.000502 * T * T
+		# MP7 = 72.64878 + 428.37911 * T + 0.000079 * T * T
+		# MP8 = 37.73063 + 218.46134 * T - 0.000070 * T * T
 # Орбита меркурия
 		LP1 = 178.179078 + 149474.07078 * T + 0.0003011 * T * T  # ср долгота L
 		wP1 = 28.753753 + 0.3702806 * T + 0.0001208 * T * T  # аргумент перигелия w
@@ -1630,9 +1644,9 @@ class WeatherMSN(Screen):
 		EP1 = 0.20561421 + 0.00002046 * T - 0.000000030 * T * T  # эксцентриситет орбиты e
 
 		EL = 0.00204 * math.cos((5 * MP2 - 2 * MP1 + 12.220) * DEG2RAD)\
-			 + 0.00103 * math.cos((2 * MP2 - MP1 - 160.692) * DEG2RAD)\
-			 + 0.00091 * math.cos((2 * MP5 - MP1 - 37.003) * DEG2RAD)\
-			 + 0.00078 * math.cos((5 * MP2 - 3 * MP1 + 10.137) * DEG2RAD)
+			+ 0.00103 * math.cos((2 * MP2 - MP1 - 160.692) * DEG2RAD)\
+			+ 0.00091 * math.cos((2 * MP5 - MP1 - 37.003) * DEG2RAD)\
+			+ 0.00078 * math.cos((5 * MP2 - 3 * MP1 + 10.137) * DEG2RAD)
 
 		LP = LP1 + EL
 		M0 = math.fmod(174.795 + 4.092317 * (JDN - 2451545), 360)  # ср аномалия
@@ -2225,7 +2239,7 @@ class WeatherMSN(Screen):
 			self.moonphase['Moonphase'] = '%s' % phase
 			self.moonlight['Moonlight'] = '%s %s' % (light, six.ensure_str(six.unichr(37)))
 			self.picmoon['PicMoon'] = '%s' % pic
-		except:
+		except Exception:
 			pass
 			self.picmoon['PicMoon'] = '1'
 		self.get_widgets()
@@ -2759,7 +2773,7 @@ class ConfigWeatherMSN(ConfigListScreen, Screen):
 			helpwindowpos = self["HelpWindow"].getPosition()
 			if current[1].help_window.instance is not None:
 				current[1].help_window.instance.move(ePoint(helpwindowpos[0], helpwindowpos[1]))
-		except:
+		except Exception:
 			pass
 
 	def createConverter(self):
@@ -2830,7 +2844,7 @@ class SearchLocationMSN(Screen):
 	def showMenu(self):
 		try:
 			results = search_title(self.eventname)
-		except:
+		except Exception:
 			results = []
 		if len(results) == 0:
 			return False
@@ -2838,7 +2852,7 @@ class SearchLocationMSN(Screen):
 		for searchResult in results:
 			try:
 				self.resultlist.append(searchResult)
-			except:
+			except Exception:
 				pass
 		self['menu'].l.setList(self.resultlist)
 
@@ -2855,7 +2869,7 @@ def search_title(id):
 	watchrequest = Request(url)
 	try:
 		watchvideopage = urlopen(watchrequest)
-	except (URLError, HTTPException, socket.error) as err:
+	except Exception as err:
 		print("[Location] Error: Unable to retrieve page - Error code: ", str(err))
 	content = watchvideopage.read()
 	root = cet_fromstring(content)
